@@ -4,6 +4,7 @@ import { DynamicBlock } from '../dynamic-block';
 import { CommonModule } from '@angular/common';
 import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { nonbreak } from 'src/app/helpers/nonbreak';        // ← ДОБАВЛЕНО
 
 
 enum EBullets {
@@ -77,13 +78,13 @@ export class DynamicListComponent extends DynamicBlock {
       case EBullets.NUMBER:
         description = 'num list';
         bulletCode = `
-  <td valign="top" width="24" class="textColor1" style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:17px;line-height:24px;color:#333333;font-weight:normal;padding-bottom:2px;">
+  <td valign="top" width="24" class="textColor1" style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:17px;line-height:24px;color:#333333;font-weight:normal;padding-bottom:2px;">
         `;
         break;
       case EBullets.DASH:
         description = 'dashed list';
         bulletCode = `
-  <td valign="top" width="24" class="textColor1" style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:17px;line-height:24px;color:#333333;font-weight:normal;padding-bottom:2px;">—
+  <td valign="top" width="24" class="textColor1" style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:17px;line-height:24px;color:#333333;font-weight:normal;padding-bottom:2px;">—
   `;
         break;
       default:
@@ -100,8 +101,8 @@ export class DynamicListComponent extends DynamicBlock {
                   ${bulletType === EBullets.NUMBER ? (index + 1)+'.' : ''}
                   </td>
                   <td class="textColor1"
-                      style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:17px;line-height:24px;color:#333333;font-weight:normal;padding-bottom:2px;">
-                      ${item}
+                      style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:17px;line-height:24px;color:#333333;font-weight:normal;padding-bottom:2px;">
+                      ${nonbreak(item)}
                   </td>
               </tr>
           </table>
