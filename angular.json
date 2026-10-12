@@ -23,6 +23,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "baseHref": "/email-editor-2/",
             "assets": [
               "src/mailpencil.ico",
               "src/assets",
