@@ -81,7 +81,7 @@ import{$a as te,Aa as $,Ab as Qe,B,Ba as fe,Bb as Ze,C as R,Ca as he,Cb as Xe,D 
                             <tr>
                                 <td class="accentBorder" height="1"
                                     bgColor="#494a4c"
-                                    style="background:url(https://email.cdn-tinkoff.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
+                                    style="background:url(https://email.t-static.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
                                 </td>
                             </tr>
                         </table>
