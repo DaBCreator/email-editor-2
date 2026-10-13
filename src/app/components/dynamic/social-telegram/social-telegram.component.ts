@@ -23,7 +23,7 @@ export class SocialTelegramComponent extends DynamicBlock implements AfterConten
                                   <a href="#" target="_blank"
                                       style="font-size:0;text-decoration:none;display:inline-block;">
                                       <img height="60" width="60"
-                                          src="https://email.cdn-tinkoff.ru/email/images/telegramm.png"
+                                          src="https://email.t-static.ru/email/images/telegramm.png"
                                           border="0" alt="Телеграм"
                                           style="display:block;max-width:100%;">
                                   </a>
@@ -45,7 +45,7 @@ export class SocialTelegramComponent extends DynamicBlock implements AfterConten
                           <tr>
                               <td class="accentBorder" height="1"
                                   bgColor="#494a4c"
-                                  style="background:url(https://email.cdn-tinkoff.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
+                                  style="background:url(https://email.t-static.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
                               </td>
                           </tr>
                       </table>
