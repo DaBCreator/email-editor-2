@@ -22,7 +22,7 @@ export class ButtonWithBackgroundComponent extends DynamicBlock {
                         style="mso-padding-alt:16px 36px 16px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;border-radius:4px;">
                         <a href="${text1}" target="_blank"
                             style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;display:inline-block;vertical-align:top;font-size:17px;line-height:24px;color:#333333;font-weight:normal;text-decoration:none;text-align:center;padding:16px 36px 16px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;max-width:100%;">
-                            ${text}
+                            ${nonbreak(text1)}
                         </a>
                     </td>
                 </tr>
