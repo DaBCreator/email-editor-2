@@ -25,7 +25,7 @@ export class PromoBlockComponent extends DynamicBlock {
                             <tr>
                                 <td class="textColor1" align="center"
                                     style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:32px;line-height:40px;color:#333333;font-weight:normal;">
-                                    ${text}
+                                    ${nonbreak(text1)}
                                 </td>
                             </tr>
                             <tr>
