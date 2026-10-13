@@ -15,7 +15,7 @@ export class ButtonWithGifComponent extends DynamicBlock {
     <!-- start: image -->
     <tr>
         <td align="center" style="padding-bottom:0px;">
-            <img src="https://email.cdn-tinkoff.ru/email/images/4_star_up.gif" 
+            <img src="https://email.t-static.ru/email/images/4_star_up.gif" 
                 style="display:block;width:100%;max-width:536px; vertical-align:top;" border="0"
                 alt="" width="536">
         </td>
@@ -44,7 +44,7 @@ export class ButtonWithGifComponent extends DynamicBlock {
 <!-- start: image -->
     <tr>
         <td align="center" style="padding-bottom:0px;">
-            <img src="https://email.cdn-tinkoff.ru/email/images/4_star_down.gif" 
+            <img src="https://email.t-static.ru/email/images/4_star_down.gif" 
                 style="display:block;width:100%;max-width:536px; vertical-align:top;" border="0"
                 alt="" width="536">
         </td>
