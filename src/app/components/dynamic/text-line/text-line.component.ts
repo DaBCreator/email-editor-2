@@ -16,7 +16,7 @@ export class TextLineComponent extends DynamicBlock implements AfterContentInit 
           <table border="0" cellpadding="0" cellspacing="0" width="100%">
               <tr>
                   <td class="accentBorder" height="1" bgColor="#494a4c"
-                      style="background:url(https://email.cdn-tinkoff.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
+                      style="background:url(https://email.t-static.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
                   </td>
               </tr>
           </table>
