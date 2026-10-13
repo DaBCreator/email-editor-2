@@ -615,7 +615,7 @@ import{$a as te,Aa as P,Ab as Ze,B,Ba as fe,Bb as Qe,C as R,Ca as he,Cb as Xe,D 
                                     <a href="#" target="_blank"
                                         style="font-size:0;text-decoration:none;display:inline-block;">
                                         <img height="60" width="60"
-                                            src="https://email.cdn-tinkoff.ru/email/images/${n}.png"
+                                            src="${n}"
                                             border="0"
                                             alt=""
                                             style="display:block;max-width:100%;">
@@ -636,7 +636,7 @@ import{$a as te,Aa as P,Ab as Ze,B,Ba as fe,Bb as Qe,C as R,Ca as he,Cb as Xe,D 
                             <tr>
                                 <td class="accentBorder" height="1"
                                     bgColor="#494a4c"
-                                    style="background:url(https://email.cdn-tinkoff.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
+                                    style="background:url(https://email.t-static.ru/email/images/Line56.png);font-size:1px;line-height:1px;">
                                 </td>
                             </tr>
                         </table>
