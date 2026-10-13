@@ -27,7 +27,7 @@ export class BringFriendComponent extends DynamicBlock {
                                     <a  target="_blank"
                                         class="textColor1"
                                         style="font-family:'San Francisco', Segoe, Roboto, Arial, Helvetica, sans-serif;font-size:20px;line-height:28px;color:#333333;font-weight:normal;text-decoration:none;">
-                                        ${text}
+                                        ${nonbreak(text1)}
                                     </a>
                                 </td>
                             </tr>
