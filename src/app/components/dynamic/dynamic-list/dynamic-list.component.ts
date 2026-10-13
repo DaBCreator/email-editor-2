@@ -4,7 +4,7 @@ import { DynamicBlock } from '../dynamic-block';
 import { CommonModule } from '@angular/common';
 import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { nonbreak } from 'src/app/helpers/nonbreak';        // ← ДОБАВЛЕНО
+import { nonbreak } from 'src/app/helpers/nonbreak';
 
 
 enum EBullets {
