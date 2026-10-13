@@ -24,7 +24,7 @@ export class AlarmBlockComponent extends DynamicBlock {
                             width="100%">
                             <tr>
                                 <td align="center">
-                                    <img src="https://email.cdn-tinkoff.ru/email/images/ing64.png"
+                                    <img src="https://email.t-static.ru/email/images/ing64.png"
                                         style="max-width:100%;display:block;"
                                         border="0" alt="" width="40">
                                 </td>
