@@ -326,7 +326,7 @@ export class OutputComponent {
             doc: this.formattedCode,
             extensions: [
               basicSetup,
-              // html(), // Убираем, чтобы не было конфликта цветов
+              html(), // Убираем, чтобы не было конфликта цветов
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
                   this.formattedCode = update.state.doc.toString();
