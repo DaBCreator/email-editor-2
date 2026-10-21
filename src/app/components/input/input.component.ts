@@ -73,6 +73,12 @@ export class InputComponent {
         { component: AccentTextWithBackgroundComponent, name: 'Accent text with background', height: 1 },
         { component: ButtonWithBackgroundComponent, name: 'Кнопка', height: 2 },
         { component: ButtonWithGifComponent, name: 'Кнопка с гиф', height: 2 },
+      ] as IComponent[]
+    },
+    {
+      name: 'Футеры',
+      isOpen: true,
+      items: [
         { component: FooterOneComponent, name: 'Футер 1. Т-Банк + лого', height: 1 },
         { component: FooterTwoComponent, name: 'Футер 2. Т-Банк + Отписаться + Условия', height: 1 },
         { component: FooterThreeComponent, name: 'Футер 3. Т-Банк + Отписаться', height: 1 },
@@ -81,7 +87,7 @@ export class InputComponent {
       ] as IComponent[]
     },
     {
-      name: 'Дополнительные',
+      name: 'Дополнительно',
       isOpen: false,
       items: [
         { component: AccentTextWithBorderComponent, name: 'AccentTextWithBorder', height: 1 },
