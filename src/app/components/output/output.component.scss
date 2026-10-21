@@ -20,19 +20,23 @@
 .code-container {
   position: relative;
   width: 100%;
-  height: 750px;
+  height: 750px; /* Фиксированная высота */
   resize: vertical;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   background-color: #fafafa;
   overflow: hidden;
+  
+  display: flex;
+  flex-direction: column;
 }
 
 /* Скроллируемая область с кодом */
 .code-scroll-area {
+  flex: 1;
   width: 100%;
-  height: 100%;
-  overflow: auto;
+  overflow: auto;           
+  position: relative;
 }
 
 /* Блок с кнопками (Предпросмотр и Копировать) */
