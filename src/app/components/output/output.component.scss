@@ -77,3 +77,39 @@
 .cm-scroller {
   overflow: auto;
 }
+
+/* Явно задаем цвета для подсветки, чтобы они точно сработали */
+.hljs {
+  color: #24292e;
+  background: transparent;
+}
+
+.hljs-tag,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #d73a49; /* Красный для тегов, как в GitHub */
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #032f62; /* Темно-синий для строк и атрибутов */
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #6a737d; /* Серый для комментариев */
+}
