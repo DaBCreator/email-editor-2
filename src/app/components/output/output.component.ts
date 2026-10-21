@@ -3,6 +3,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TuiButtonModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { EditorView, basicSetup } from 'codemirror';
 import { html } from '@codemirror/lang-html';
@@ -22,7 +23,7 @@ export class OutputComponent {
   @Input() code = '';
   
   formattedCode = '';
-  highlightedCode = '';
+  highlightedCode: SafeHtml = '';
   isEditMode = false;
   editorView: EditorView | null = null;
 
@@ -302,15 +303,16 @@ export class OutputComponent {
 </html>
  `;
 
- ngOnChanges(changes: SimpleChanges) {
+ constructor(private sanitizer: DomSanitizer) {}
+  
+   ngOnChanges(changes: SimpleChanges) {
     (async () => {
       const beautify = await import('js-beautify');
       this.formattedCode = beautify.default.html(this.prefix + changes['code'].currentValue + this.suffix, {});
       
-      // Подсвеченный HTML для режима просмотра
-      this.highlightedCode = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+      const rawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+      this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
 
-      // Если редактор открыт, обновляем в нём текст
       if (this.editorView) {
          this.editorView.dispatch({
            changes: { from: 0, to: this.editorView.state.doc.length, insert: this.formattedCode }
@@ -323,7 +325,6 @@ export class OutputComponent {
     this.isEditMode = !this.isEditMode;
 
     if (this.isEditMode) {
-      // Даем Angular отрисовать div, затем инициализируем CodeMirror
       setTimeout(() => {
         const el = document.getElementById('cm-editor-container');
         if (el) {
@@ -335,8 +336,10 @@ export class OutputComponent {
               oneDark,
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
-                  // Сохраняем изменения в переменную
                   this.formattedCode = update.state.doc.toString();
+                  
+                  const newRawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+                  this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(newRawHtml);
                 }
               })
             ],
@@ -345,7 +348,6 @@ export class OutputComponent {
         }
       }, 0);
     } else {
-      // Уничтожаем редактор при выходе
       if (this.editorView) {
         this.editorView.destroy();
         this.editorView = null;
