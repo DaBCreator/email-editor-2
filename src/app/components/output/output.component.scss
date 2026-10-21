@@ -120,75 +120,73 @@
 
 /* ЦВЕТА ДЛЯ CODEMIRROR (Тёмная тема Visual Studio) */
 
-/* Тёмный фон редактора */
 .cm-editor {
-  background-color: #1e1e1e !important;
-  color: #d4d4d4 !important; /* Основной текст — светло-серый */
+  /* Основной фон и текст */
+  --bg-color: #1e1e1e;
+  --text-color: #d4d4d4;
+  
+  /* Цвета токенов (как в VS) */
+  --tag-color: #569cd6;        /* Теги - голубой */
+  --attr-color: #9cdcfe;       /* Атрибуты - светло-голубой */
+  --string-color: #ce9178;     /* Строки - оранжевый */
+  --comment-color: #608b4e;    /* Комментарии - зелёный */
+  --number-color: #b5cea8;     /* Числа - салатовый */
+  --keyword-color: #c586c0;    /* Ключевые слова - фиолетовый (как if, for) */
+
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
 
-/* Номера строк */
+/* Перебиваем классы CodeMirror жестко через !important */
+.cm-editor .cm-content {
+  color: var(--text-color) !important;
+}
+
+/* Теги (<, >, html) */
+.cm-editor .tok-tag,
+.cm-editor .tok-angle-bracket {
+  color: var(--tag-color) !important;
+}
+
+/* Атрибуты (class=, style=) и названия тегов */
+.cm-editor .tok-attribute-name,
+.cm-editor .tok-name {
+  color: var(--attr-color) !important;
+}
+
+/* Строки в кавычках ("...") */
+.cm-editor .tok-string,
+.cm-editor .tok-string2 {
+  color: var(--string-color) !important;
+}
+
+/* Комментарии (<!-- -->) */
+.cm-editor .tok-comment {
+  color: var(--comment-color) !important;
+  font-style: italic !important;
+}
+
+/* Числа (px, %, 0) */
+.cm-editor .tok-number {
+  color: var(--number-color) !important;
+}
+
+/* Свойства (color-scheme, display) */
+.cm-editor .tok-property-name {
+  color: var(--text-color) !important; 
+}
+
+/* Боковая панель с номерами строк */
 .cm-gutters {
-  background-color: #1e1e1e !important;
+  background-color: var(--bg-color) !important;
   color: #858585 !important;
   border-right: 1px solid #333 !important;
 }
 
-/* Подсветка активной строки */
+/* Активная строка */
 .cm-activeLine {
   background-color: #2a2a2a !important;
 }
 .cm-activeLineGutter {
   background-color: #2a2a2a !important;
-}
-
-/* --- ПОДСВЕТКА СИНТАКСИСА --- */
-
-/* 1. Теги (<html>, <head>, <meta>) — Светло-голубой */
-.cm-editor .ͼb, 
-.cm-editor .ͼc,
-.cm-editor .tok-tag,
-.cm-editor .tok-angle-bracket {
-  color: #569cd6 !important; 
-}
-
-/* 2. Названия тегов и атрибуты — Чуть светлее голубого */
-.cm-editor .ͼd, 
-.cm-editor .tok-attribute-name,
-.cm-editor .tok-name {
-  color: #9cdcfe !important; 
-}
-
-/* 3. Строки ("text/html", "utf-8") — Оранжево-коричневый */
-.cm-editor .ͼe, 
-.cm-editor .tok-string,
-.cm-editor .tok-string2 {
-  color: #ce9178 !important; 
-}
-
-/* 4. Свойства и ключевые слова (color-scheme: dark) — Голубой */
-.cm-editor .ͼf, 
-.cm-editor .tok-property-name,
-.cm-editor .tok-keyword {
-  color: #9cdcfe !important; 
-}
-
-/* 5. Комментарии (<!DOCTYPE html>, <!-- start -->) — Тёмно-зелёный */
-.cm-editor .ͼg, 
-.cm-editor .tok-comment {
-  color: #608b4e !important; 
-}
-
-/* 6. Значения (light dark, 0, 100%) — Светло-зелёный */
-.cm-editor .ͼh, 
-.cm-editor .tok-number,
-.cm-editor .tok-literal,
-.cm-editor .tok-atom {
-  color: #b5cea8 !important; 
-}
-
-/* 7. Скобки и операторы (<, >, =, :) — Серый */
-.cm-editor .ͼi, 
-.cm-editor .tok-punctuation,
-.cm-editor .tok-operator {
-  color: #d4d4d4 !important; 
 }
