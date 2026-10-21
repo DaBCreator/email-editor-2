@@ -298,7 +298,6 @@ export class OutputComponent {
 
 </html>
  `;
-}
 
 ngOnChanges(changes: SimpleChanges) {
     (async () => {
