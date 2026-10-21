@@ -35,12 +35,18 @@
   overflow: auto;
 }
 
-/* Кнопка копирования */
-.copy-btn {
+/* Блок с кнопками (Предпросмотр и Копировать) */
+.action-buttons {
   position: absolute;
   top: 12px;
   right: 12px;
   z-index: 10;
+  display: flex;
+  gap: 6px; /* Отступ между кнопками */
+}
+
+/* Общие стили для обеих кнопок */
+.action-btn {
   opacity: 0.7;
   transition: opacity 0.2s;
   
@@ -53,7 +59,7 @@
 .preview-mode pre {
   margin: 0;
   padding: 16px;
-  padding-top: 48px;
+  padding-top: 48px; /* Отступ под кнопки */
   min-height: 100%;
   white-space: pre-wrap;
   word-break: break-all;
