@@ -1,125 +1,33 @@
-.output-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 500px;
-}
+.output-container { display: flex; flex-direction: column; gap: 8px; }
+.toolbar { display: flex; justify-content: flex-end; }
 
-/* Тулбар */
-.toolbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 8px;
-}
+/* --- ПРОСМОТР --- */
+.preview-mode { flex: 1; display: flex; flex-direction: column; }
+.code-container { position: relative; width: 100%; height: 500px; resize: vertical; overflow: auto; border: 2px solid #ccc; background-color: #ffffff; }
+.copy-btn { position: absolute; top: 8px; right: 8px; z-index: 10; opacity: 0.6; &:hover { opacity: 1; } }
+.preview-mode pre { margin: 0; padding: 16px; min-height: 100%; white-space: pre-wrap; word-break: break-all; }
 
-/* Контейнер с кодом */
-.preview-mode {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* --- РЕДАКТИРОВАНИЕ --- */
+.editor-mode { width: 100%; height: 500px; resize: vertical; overflow: hidden; border: 1px solid #444; border-radius: 4px; }
+.fake-editor-wrapper { position: relative; width: 100%; height: 100%; background-color: #020304; }
+.fake-editor-wrapper pre, .fake-editor-wrapper textarea {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; padding: 16px;
+  font-family: monospace; font-size: 14px; line-height: 1.5; white-space: pre; overflow: auto;
+  box-sizing: border-box; border: none; outline: none;
 }
+.fake-editor-highlight { pointer-events: none; z-index: 1; }
+.fake-editor-input { z-index: 2; color: transparent !important; background: transparent !important; caret-color: #BBBEBF; resize: none; }
+.fake-editor-input::selection { background-color: #276782dd !important; color: transparent !important; }
+.fake-editor-input::-webkit-scrollbar { width: 14px; height: 14px; }
+.fake-editor-highlight::-webkit-scrollbar { display: none; }
 
-.code-container {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  min-height: 200px;
-  max-height: 80vh;
-  resize: vertical;
-  overflow: auto;
-  border: 2px solid black;
-  background-color: #ffffff;
-}
-
-/* Кнопка копирования */
-.copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 10;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-  
-  &:hover {
-    opacity: 1;
-  }
-}
-
-/* Стили для <pre> */
-.preview-mode pre {
-  margin: 0;
-  padding: 16px 48px 16px 16px;
-  min-height: 100%;
-  width: max-content;
-  min-width: 100%;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-/* Режим редактирования */
-.editor-mode {
-  width: 100%;
-  height: 500px;
-  resize: vertical;
-  overflow: auto;
-  border: 1px solid #444;
-  border-radius: 4px;
-}
-
-#cm-editor-container {
-  height: 100%;
-}
-
-.cm-editor {
-  height: 100%;
-}
-
-.cm-scroller {
-  overflow: auto !important;
-}
-
-/* ЦВЕТА ДЛЯ ПОДСВЕТКИ */
-
-/* Базовый текст */
-::ng-deep .preview-mode .hljs {
-  color: #333333; /* Обычный текст */
-  background: transparent !important;
-}
-
-/* Теги (<html>, <table>, <div>) - Синий/Фиолетовый */
-::ng-deep .preview-mode .hljs-tag,
-::ng-deep .preview-mode .hljs-keyword,
-::ng-deep .preview-mode .hljs-selector-tag {
-  color: #0000ff; 
-}
-
-/* Названия тегов (html, body, table) */
-::ng-deep .preview-mode .hljs-name {
-  color: #800080; /* Фиолетовый */
-}
-
-/* Атрибуты (class, style, src) - Красный */
-::ng-deep .preview-mode .hljs-attr,
-::ng-deep .preview-mode .hljs-attribute {
-  color: #ff0000; 
-}
-
-/* Значения атрибутов и строки ("...", "container") - Темно-синий */
-::ng-deep .preview-mode .hljs-string,
-::ng-deep .preview-mode .hljs-title,
-::ng-deep .preview-mode .hljs-type,
-::ng-deep .preview-mode .hljs-variable,
-::ng-deep .preview-mode .hljs-template-variable {
-  color: #00008b; 
-}
-
-/* Комментарии (<!-- start: header -->) - Зеленый */
-::ng-deep .preview-mode .hljs-comment,
-::ng-deep .preview-mode .hljs-quote {
-  color: #008000; 
-}
-
-/* Мета-теги (!DOCTYPE, &nbsp;) - Оранжевый/Коричневый */
-::ng-deep .preview-mode .hljs-meta {
-  color: #a0522d;
-}
+/* --- ЦВЕТА ПОДСВЕТКИ --- */
+::ng-deep .hljs { color: #BBBEBF; background: transparent !important; }
+::ng-deep .hljs-tag, ::ng-deep .hljs-name, ::ng-deep .hljs-selector-tag { color: #569cd6; } /* Теги */
+::ng-deep .hljs-attr { color: #9cdcfe; } /* Атрибуты */
+::ng-deep .hljs-string { color: #ce9178; } /* Строки */
+::ng-deep .hljs-comment { color: #6A9955; font-style: italic; } /* Комментарии */
+::ng-deep .hljs-number { color: #b5cea8; } /* Числа */
+::ng-deep .hljs-meta { color: #808080; } /* DOCTYPE, скобки */
+::ng-deep .hljs-attribute { color: #9cdcfe; }
+::ng-deep .hljs-variable { color: #9cdcfe; }
