@@ -329,7 +329,7 @@ export class OutputComponent implements AfterViewChecked {
     this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
   }
 
-  private syncScroll() {
+  syncScroll() {
     if (this.textarea && this.pre) {
       this.pre.nativeElement.scrollTop = this.textarea.nativeElement.scrollTop;
       this.pre.nativeElement.scrollLeft = this.textarea.nativeElement.scrollLeft;
