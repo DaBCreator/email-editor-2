@@ -141,46 +141,50 @@
   border-right: 1px solid #131415 !important;
 }
 
-/* ТЕГИ (<html>, <div>, <meta>) - голубые */
+/* ТЕГИ (<html>, <div>, <meta>) - голубые #569cd6 */
 ::ng-deep .cm-tag,
-::ng-deep .cm-angleBracket {
+::ng-deep .cm-tagName,
+::ng-deep .cm-tagname,
+::ng-deep .cm-angleBracket,
+::ng-deep .cm-bracket {
   color: #569cd6 !important;
 }
 
-/* АТРИБУТЫ (class, style, href) - светло-голубые */
+/* АТРИБУТЫ (class, style, href) - светло-голубые #9cdcfe */
 ::ng-deep .cm-attributeName,
-::ng-deep .cm-attribute {
+::ng-deep .cm-attribute,
+::ng-deep .cm-attributeValue {
   color: #9cdcfe !important;
 }
 
-/* СТРОКИ ("utf-8", "container") - оранжевые */
+/* СТРОКИ ("utf-8", "container") - оранжевые #ce9178 */
 ::ng-deep .cm-string {
   color: #ce9178 !important;
 }
 
-/* КОММЕНТАРИИ (<!-- ... -->) - зеленые */
+/* КОММЕНТАРИИ (<!-- ... -->) - зеленые #6A9955 */
 ::ng-deep .cm-comment {
   color: #6A9955 !important;
   font-style: italic !important;
 }
 
-/* СВОЙСТВА CSS (color-scheme, padding) - светло-голубые */
+/* СВОЙСТВА CSS (color-scheme, padding) - светло-голубые #9cdcfe */
 ::ng-deep .cm-propertyName,
 ::ng-deep .cm-property {
   color: #9cdcfe !important;
 }
 
-/* ЧИСЛА (100px, 0) - салатовые */
+/* ЧИСЛА (100px, 0) - салатовые #b5cea8 */
 ::ng-deep .cm-number {
   color: #b5cea8 !important;
 }
 
-/* КЛЮЧЕВЫЕ СЛОВА (important, media) - голубые */
+/* КЛЮЧЕВЫЕ СЛОВА (important, media) - голубые #569cd6 */
 ::ng-deep .cm-keyword {
   color: #569cd6 !important;
 }
 
-/* ПУНКТУАЦИЯ (скобки, точки с запятой) - серые */
+/* ПУНКТУАЦИЯ (скобки, точки с запятой) - серые #D4D4D4 */
 ::ng-deep .cm-punctuation {
   color: #D4D4D4 !important;
 }
