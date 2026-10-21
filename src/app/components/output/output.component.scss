@@ -76,58 +76,44 @@
 
 /* Базовый текст */
 ::ng-deep .preview-mode .hljs {
-  color: #333333; /* Мягкий тёмно-серый */
+  color: #333333; /* Обычный текст */
   background: transparent !important;
 }
 
-/* Теги (<html>, <table>, <div>) — насыщенный синий */
+/* Теги (<html>, <table>, <div>) - Синий/Фиолетовый */
 ::ng-deep .preview-mode .hljs-tag,
 ::ng-deep .preview-mode .hljs-keyword,
-::ng-deep .preview-mode .hljs-selector-tag,
-::ng-deep .preview-mode .hljs-literal,
-::ng-deep .preview-mode .hljs-section {
-  color: #2b70c9; 
+::ng-deep .preview-mode .hljs-selector-tag {
+  color: #0000ff; 
 }
 
 /* Названия тегов (html, body, table) */
 ::ng-deep .preview-mode .hljs-name {
-  color: #1a5eb3;
+  color: #800080; /* Фиолетовый */
 }
 
-/* Атрибуты (class, style, src) — бирюзовый */
+/* Атрибуты (class, style, src) - Красный */
 ::ng-deep .preview-mode .hljs-attr,
 ::ng-deep .preview-mode .hljs-attribute {
-  color: #1c9bc2; 
+  color: #ff0000; 
 }
 
-/* Значения атрибутов и строки ("...", "container") — зелёный */
+/* Значения атрибутов и строки ("...", "container") - Темно-синий */
 ::ng-deep .preview-mode .hljs-string,
 ::ng-deep .preview-mode .hljs-title,
 ::ng-deep .preview-mode .hljs-type,
-::ng-deep .preview-mode .hljs-symbol,
-::ng-deep .preview-mode .hljs-bullet,
-::ng-deep .preview-mode .hljs-addition,
 ::ng-deep .preview-mode .hljs-variable,
-::ng-deep .preview-mode .hljs-template-tag,
 ::ng-deep .preview-mode .hljs-template-variable {
-  color: #4ea362; 
+  color: #00008b; 
 }
 
-/* Комментарии (<!-- start: header -->) — серо-зелёный курсив */
+/* Комментарии (<!-- start: header -->) - Зеленый */
 ::ng-deep .preview-mode .hljs-comment,
-::ng-deep .preview-mode .hljs-quote,
-::ng-deep .preview-mode .hljs-deletion {
-  color: #8b9aa3; 
-  font-style: italic;
+::ng-deep .preview-mode .hljs-quote {
+  color: #008000; 
 }
 
-/* Мета-теги (!DOCTYPE) — фиолетовый */
+/* Мета-теги (!DOCTYPE, &nbsp;) - Оранжевый/Коричневый */
 ::ng-deep .preview-mode .hljs-meta {
-  color: #9c4d9e;
-}
-
-/* Спецсимволы (&nbsp;, &bull;) — оранжевый */
-::ng-deep .preview-mode .hljs-entity,
-::ng-deep .preview-mode .hljs-symbol {
-  color: #d68a36;
+  color: #a0522d;
 }
