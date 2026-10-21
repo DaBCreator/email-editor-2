@@ -57,146 +57,43 @@ export class InputComponent {
   @Output() onGenerateCode = new EventEmitter<string>();
 
   components: IComponent[] = [
-    {
-      component: ContentTitleComponent,
-      name: 'ContentTitle',
-      height: 1
-    },
-    {
-      component: ContentTextComponent,
-      name: 'ContentText',
-      height: 2
-    },
-    {
-      component: PreheaderComponent,
-      name: 'Preheader',
-      height: 1
-    },
-    {
-      component: HeaderTitleComponent,
-      name: 'HeaderTitle',
-      height: 1
-    },
-    {
-      component: HeaderTextComponent,
-      name: 'HeaderText',
-      height: 1
-    },
-    {
-      component: HeaderEndComponent,
-      name: 'Обязательный блок после хедера',
-      height: 1
-    },
-    {
-      component: LittleTitleComponent,
-      name: 'Little Title',
-      height: 1
-    },
-    {
-      component: AccentTextWithBackgroundComponent,
-      name: 'Accent text with background',
-      height: 1
-    },
-    {
-      component: AccentTextWithBorderComponent,
-      name: 'AccentTextWithBorder',
-      height: 1
-    },
-    {
-      component: TextLineComponent,
-      name: 'Text line',
-      height: 1
-    },
-    {
-      component: ImageComponent,
-      name: 'Image - название файла изображения',
-      height: 1
-    },
-    {
-      component: ButtonWithBackgroundComponent,
-      name: 'Кнопка',
-      height: 2
-    },
-    {
-      component: ButtonWithGifComponent, 
-      name: 'Кнопка с гиф',
-      height: 2
-    },
-    {
-      component: FooterOneComponent,
-      name: 'Футер 1. Т-Банк + лого',
-      height: 1
-    },
-    {
-      component: FooterTwoComponent,
-      name: 'Футер 2. Т-Банк + Отписаться + Условия',
-      height: 1
-    },
-    {
-      component: FooterThreeComponent,
-      name: 'Футер 3. Т-Банк + Отписаться',
-      height: 1
-    },
-    {
-      component: FooterFourComponent,
-      name: 'Футер 4. Т-Банк + Условия',
-      height: 1
-    },
-    {
-      component: FooterFiveComponent,
-      name: 'Футер 5. Т-Банк + Инвест рекоменд + условия',
-      height: 1
-    },
-    {
-      component: AlarmBlockComponent,
-      name: 'AlarmBlock',
-      height: 2
-    },
-    {
-      component: PromoBlockComponent,
-      name: 'PromoBlock',
-      height: 2
-    },
-    {
-      component: BringFriendComponent,
-      name: 'BringFriend',
-      height: 2
-    },
-    {
-      component: EmptyPreheaderComponent,
-      name: 'EmptyPreheader',
-      height: 1
-    },
-    {
-      component: BtnsComponent,
-      name: 'Лого скачать приложение',
-      height: 1
-    },
-    {
-      component: DynamicListComponent,
-      name: 'Список',
-      height: 3
-    },
-    {
-      component: SquareImageComponent,
-      name: 'Блок с маленькой квадратной картинкой',
-      height: 2
-    },
-    {
-      component: CircleImageComponent,
-      name: 'Блок с маленькой круглой картинкой',
-      height: 3
-    },
-    {
-      component: OperatorComponent,
-      name: 'Условные операторы',
-      height: 1
-    },
-    {
-      component: SocialTelegramComponent,
-      name: 'Отправить в Телеграм',
-      height: 1
-    },
+    // 1. Начало письма
+    { component: PreheaderComponent, name: 'Preheader', height: 1 },
+    { component: ImageComponent, name: 'Image - название файла изображения', height: 1 },
+    { component: HeaderTitleComponent, name: 'HeaderTitle', height: 1 },
+    { component: HeaderTextComponent, name: 'HeaderText', height: 1 },
+    { component: HeaderEndComponent, name: 'Обязательный блок после хедера', height: 1 },
+    
+    // 2. Основной контент
+    { component: ContentTitleComponent, name: 'ContentTitle', height: 1 },
+    { component: ContentTextComponent, name: 'ContentText', height: 2 },
+    { component: LittleTitleComponent, name: 'Little Title', height: 1 },
+    { component: DynamicListComponent, name: 'Список', height: 3 },
+    { component: AccentTextWithBackgroundComponent, name: 'Accent text with background', height: 1 },
+
+    // 3. Кнопки
+    { component: ButtonWithBackgroundComponent, name: 'Кнопка', height: 2 },
+    { component: ButtonWithGifComponent, name: 'Кнопка с гиф', height: 2 },
+    
+    // 3. Футеры
+    { component: FooterOneComponent, name: 'Футер 1. Т-Банк + лого', height: 1 },
+    { component: FooterTwoComponent, name: 'Футер 2. Т-Банк + Отписаться + Условия', height: 1 },
+    { component: FooterThreeComponent, name: 'Футер 3. Т-Банк + Отписаться', height: 1 },
+    { component: FooterFourComponent, name: 'Футер 4. Т-Банк + Условия', height: 1 },
+    { component: FooterFiveComponent, name: 'Футер 5. Т-Банк + Инвест рекоменд + условия', height: 1 },
+    
+    // 4. Все остальное (редкие блоки)
+    { component: AccentTextWithBorderComponent, name: 'AccentTextWithBorder', height: 1 },
+    { component: TextLineComponent, name: 'Text line', height: 1 },
+    { component: AlarmBlockComponent, name: 'AlarmBlock', height: 2 },
+    { component: PromoBlockComponent, name: 'PromoBlock', height: 2 },
+    { component: BringFriendComponent, name: 'BringFriend', height: 2 },
+    { component: EmptyPreheaderComponent, name: 'EmptyPreheader', height: 1 },
+    { component: BtnsComponent, name: 'Лого скачать приложение', height: 1 },
+    { component: SquareImageComponent, name: 'Блок с маленькой квадратной картинкой', height: 2 },
+    { component: CircleImageComponent, name: 'Блок с маленькой круглой картинкой', height: 3 },
+    { component: OperatorComponent, name: 'Условные операторы', height: 1 },
+    { component: SocialTelegramComponent, name: 'Отправить в Телеграм', height: 1 },
   ]
 
   blocks: IBlock[] = []
