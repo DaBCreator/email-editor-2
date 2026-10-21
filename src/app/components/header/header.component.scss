@@ -1,13 +1,16 @@
-.scroll-btn-absolute {
-  position: absolute; 
-  left: 24px;
-  z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
+/* Обертка заголовка */
 .header-title-wrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 32px;
   margin-top: 32px;
+}
+
+/* Кнопка */
+.my-fixed-btn {
+  position: fixed !important;
+  top: 24px !important;
+  left: 24px !important;
+  z-index: 9999 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
 }
