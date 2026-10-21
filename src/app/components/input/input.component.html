@@ -1,27 +1,3 @@
-<tui-tiles
-           class="tiles"
-           [debounce]="200"
-           [(order)]="order"
-           (orderChange)=onDrag($event)>
-  <tui-tile
-            *ngFor="let block of blocks; let index = index"
-            class="tile"
-            [height]="block.height"
-            [style.order]="order.get(index)"
-            [width]=3>
-    <div class="content">
-      {{block.name}}
-      <ng-container *ngComponentOutlet="block.component; ndcDynamicInputs: block.inputs;
-      ndcDynamicOutputs: block.outputs" />
-      <tui-svg src="tuiIconDragLarge"
-               tuiTileHandle
-               class="handle"></tui-svg>
-      <tui-svg class="delete" src="tuiIconX" (click)=removeComponent(index)></tui-svg>
-    </div>
-
-  </tui-tile>
-</tui-tiles>
-
 <!-- ПАЛИТРА БЛОКОВ -->
 <div class="groups-container">
   <div class="block-group" *ngFor="let group of componentGroups">
@@ -50,3 +26,27 @@
     
   </div>
 </div> 
+
+<tui-tiles
+           class="tiles"
+           [debounce]="200"
+           [(order)]="order"
+           (orderChange)=onDrag($event)>
+  <tui-tile
+            *ngFor="let block of blocks; let index = index"
+            class="tile"
+            [height]="block.height"
+            [style.order]="order.get(index)"
+            [width]=3>
+    <div class="content">
+      {{block.name}}
+      <ng-container *ngComponentOutlet="block.component; ndcDynamicInputs: block.inputs;
+      ndcDynamicOutputs: block.outputs" />
+      <tui-svg src="tuiIconDragLarge"
+               tuiTileHandle
+               class="handle"></tui-svg>
+      <tui-svg class="delete" src="tuiIconX" (click)=removeComponent(index)></tui-svg>
+    </div>
+
+  </tui-tile>
+</tui-tiles>
