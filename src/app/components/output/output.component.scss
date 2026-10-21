@@ -123,3 +123,64 @@
 ::ng-deep .preview-mode .hljs-meta {
   color: #a0522d;
 }
+
+/* ПРИНУДИТЕЛЬНЫЕ ЦВЕТА ДЛЯ CODEMIRROR */
+
+/* Фон и основной текст */
+::ng-deep .cm-editor {
+  background-color: #020304 !important;
+}
+::ng-deep .cm-content {
+  color: #BBBEBF !important;
+}
+
+/* Номера строк */
+::ng-deep .cm-gutters {
+  background-color: #020304 !important;
+  color: #858889 !important;
+  border-right: 1px solid #131415 !important;
+}
+
+/* ТЕГИ (<html>, <div>, <meta>) - голубые */
+::ng-deep .cm-tag,
+::ng-deep .cm-angleBracket {
+  color: #569cd6 !important;
+}
+
+/* АТРИБУТЫ (class, style, href) - светло-голубые */
+::ng-deep .cm-attributeName,
+::ng-deep .cm-attribute {
+  color: #9cdcfe !important;
+}
+
+/* СТРОКИ ("utf-8", "container") - оранжевые */
+::ng-deep .cm-string {
+  color: #ce9178 !important;
+}
+
+/* КОММЕНТАРИИ (<!-- ... -->) - зеленые */
+::ng-deep .cm-comment {
+  color: #6A9955 !important;
+  font-style: italic !important;
+}
+
+/* СВОЙСТВА CSS (color-scheme, padding) - светло-голубые */
+::ng-deep .cm-propertyName,
+::ng-deep .cm-property {
+  color: #9cdcfe !important;
+}
+
+/* ЧИСЛА (100px, 0) - салатовые */
+::ng-deep .cm-number {
+  color: #b5cea8 !important;
+}
+
+/* КЛЮЧЕВЫЕ СЛОВА (important, media) - голубые */
+::ng-deep .cm-keyword {
+  color: #569cd6 !important;
+}
+
+/* ПУНКТУАЦИЯ (скобки, точки с запятой) - серые */
+::ng-deep .cm-punctuation {
+  color: #D4D4D4 !important;
+}
