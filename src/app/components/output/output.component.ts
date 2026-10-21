@@ -1,15 +1,10 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TuiButtonModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
-import { tags } from '@lezer/highlight';
-import { EditorView, basicSetup } from 'codemirror';
-import { html } from '@codemirror/lang-html';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css'; 
 
 @Component({
   selector: 'app-output',
@@ -18,13 +13,14 @@ import 'highlight.js/styles/github.css';
   templateUrl: './output.component.html',
   styleUrl: './output.component.scss'
 })
-export class OutputComponent {
+export class OutputComponent implements AfterViewChecked {
   @Input() code = '';
-  
+  @ViewChild('codeTextarea') textarea!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('codePre') pre!: ElementRef<HTMLElement>;
+
   formattedCode = '';
   highlightedCode: SafeHtml = '';
   isEditMode = false;
-  editorView: EditorView | null = null;
 
   prefix = `
 <html>
@@ -303,74 +299,40 @@ export class OutputComponent {
  `;
 
   constructor(private sanitizer: DomSanitizer) {}
-  
+
   ngOnChanges(changes: SimpleChanges) {
     (async () => {
       const beautify = await import('js-beautify');
       this.formattedCode = beautify.default.html(this.prefix + changes['code'].currentValue + this.suffix, {});
-      
-      const rawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
-      this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
-
-      if (this.editorView) {
-         this.editorView.dispatch({
-           changes: { from: 0, to: this.editorView.state.doc.length, insert: this.formattedCode }
-         });
-      }
+      this.updateHighlight();
     })().catch(console.error);
+  }
+
+  ngAfterViewChecked() {
+    if (this.isEditMode) {
+      this.syncScroll();
+    }
   }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
+  }
 
-    if (this.isEditMode) {
-      setTimeout(() => {
-        const el = document.getElementById('cm-editor-container');
-        if (el) {
-          this.editorView = new EditorView({
-            doc: this.formattedCode,
-            extensions: [
-              basicSetup,
-              html(), // ⬅️ Возвращаем встроенный парсер HTML
-              
-              EditorView.theme({
-                "&": { backgroundColor: "#020304", color: "#BBBEBF" },
-                ".cm-gutters": { backgroundColor: "#020304", color: "#858889", borderRight: "1px solid #131415" },
-                ".cm-activeLine": { backgroundColor: "#0e0f10" },
-                ".cm-activeLineGutter": { backgroundColor: "#0e0f10" },
-                ".cm-content": { caretColor: "#BBBEBF" },
-                ".cm-cursor": { borderLeftColor: "#BBBEBF" },
-                
-                // ⬇️ ВОТ ГЛАВНЫЙ ФИКС ДЛЯ ЦВЕТОВ ⬇️
-                // Мы переопределяем стандартные переменные CodeMirror
-                ".cm-tagName": { color: "#569cd6 !important" },
-                ".cm-attributeName": { color: "#9cdcfe !important" },
-                ".cm-string": { color: "#ce9178 !important" },
-                ".cm-comment": { color: "#6A9955 !important", fontStyle: "italic" },
-                ".cm-number": { color: "#b5cea8 !important" },
-                ".cm-propertyName": { color: "#9cdcfe !important" },
-                ".cm-keyword": { color: "#569cd6 !important" },
-                ".cm-punctuation": { color: "#D4D4D4 !important" },
-                ".cm-angleBracket": { color: "#808080 !important" },
-              }, { dark: true }),
-              
-              EditorView.updateListener.of((update) => {
-                if (update.docChanged) {
-                  this.formattedCode = update.state.doc.toString();
-                  const newRawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
-                  this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(newRawHtml);
-                }
-              })
-            ],
-            parent: el
-          });
-        }
-      }, 0);
-    } else {
-      if (this.editorView) {
-        this.editorView.destroy();
-        this.editorView = null;
-      }
+  onInput(event: Event) {
+    const textarea = event.target as HTMLTextAreaElement;
+    this.formattedCode = textarea.value;
+    this.updateHighlight();
+  }
+
+  private updateHighlight() {
+    const rawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+    this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
+  }
+
+  private syncScroll() {
+    if (this.textarea && this.pre) {
+      this.pre.nativeElement.scrollTop = this.textarea.nativeElement.scrollTop;
+      this.pre.nativeElement.scrollLeft = this.textarea.nativeElement.scrollLeft;
     }
   }
 }
