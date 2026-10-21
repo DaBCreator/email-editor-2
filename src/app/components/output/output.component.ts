@@ -4,10 +4,12 @@ import { TuiButtonModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// Импортируем CodeMirror
 import { EditorView, basicSetup } from 'codemirror';
 import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark';
+
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css'; 
 
 @Component({
   selector: 'app-output',
@@ -20,6 +22,7 @@ export class OutputComponent {
   @Input() code = '';
   
   formattedCode = '';
+  highlightedCode = '';
   isEditMode = false;
   editorView: EditorView | null = null;
 
@@ -299,11 +302,14 @@ export class OutputComponent {
 </html>
  `;
 
-ngOnChanges(changes: SimpleChanges) {
+ ngOnChanges(changes: SimpleChanges) {
     (async () => {
       const beautify = await import('js-beautify');
       this.formattedCode = beautify.default.html(this.prefix + changes['code'].currentValue + this.suffix, {});
       
+      // Подсвеченный HTML для режима просмотра
+      this.highlightedCode = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+
       // Если редактор открыт, обновляем в нём текст
       if (this.editorView) {
          this.editorView.dispatch({
