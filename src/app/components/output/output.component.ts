@@ -373,6 +373,7 @@ export class OutputComponent {
       if (this.editorView) {
         this.editorView.destroy();
         this.editorView = null;
-      }
+        }
     }
   }
+}
