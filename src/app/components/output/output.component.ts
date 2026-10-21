@@ -303,9 +303,9 @@ export class OutputComponent {
 </html>
  `;
 
- constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) {}
   
-   ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     (async () => {
       const beautify = await import('js-beautify');
       this.formattedCode = beautify.default.html(this.prefix + changes['code'].currentValue + this.suffix, {});
@@ -321,7 +321,7 @@ export class OutputComponent {
     })().catch(console.error);
   }
 
-    toggleEditMode() {
+  toggleEditMode() {
     this.isEditMode = !this.isEditMode;
 
     if (this.isEditMode) {
@@ -333,7 +333,7 @@ export class OutputComponent {
             extensions: [
               basicSetup,
               html(),
-              vscodeDark, // ⬅️ Наша тема Visual Studio Code
+              vscodeDark,
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
                   this.formattedCode = update.state.doc.toString();
@@ -353,4 +353,4 @@ export class OutputComponent {
       }
     }
   }
-  }
+}
