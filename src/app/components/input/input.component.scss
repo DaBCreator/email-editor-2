@@ -65,7 +65,7 @@
 .groups-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   padding: 16px 0;
   width: 100%;
 }
@@ -73,27 +73,30 @@
 .block-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
-/* Стили для кнопки-заголовка */
+/* Заголовок группы (кнопка) */
 .group-header-btn {
   width: 100%;
   display: flex;
-  justify-content: space-between !important;
+  justify-content: space-between !important; 
+  align-items: center;
   padding: 12px 16px !important;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 12px;
-}
+  background-color: #f3f4f6;
+  color: #333;
+  transition: background-color 0.2s;
 
-.group-title {
-  font-size: 16px;
+  &:hover {
+    background-color: #e5e7eb;
+  }
 }
 
 .group-icon {
   width: 20px;
   height: 20px;
-  margin-left: auto;
   transition: transform 0.3s ease;
   
   &.open {
@@ -105,16 +108,17 @@
 .group-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 4px 0 16px 0;
+  gap: 12px;
+  width: 100%;
 }
 
+/* Настройка самих кнопок */
 .block-btn {
-  flex: 1 1 calc(33.333% - 8px);
-  min-width: 160px;
+  flex: 1 1 calc(33.333% - 12px);
+  min-width: 200px;
   text-align: center;
   white-space: normal;
   height: auto;
-  min-height: 44px;
+  min-height: 48px;
   line-height: 1.2;
 }
