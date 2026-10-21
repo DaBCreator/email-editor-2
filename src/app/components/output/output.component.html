@@ -1,24 +1,26 @@
 <div class="output-container">
-  <!-- Верхний тулбар ( кнопка Редактировать) -->
+  <!-- Верхний тулбар (только кнопка Редактировать) -->
   <div class="toolbar">
     <button tuiButton appearance="secondary" size="m" (click)="toggleEditMode()">
-      {{ isEditMode ? 'Показать результат' : 'Редактировать HTML' }}
+      {{ isEditMode ? 'Посмотреть' : 'Редактировать' }}
     </button>
   </div>
 
   <!-- Режим просмотра -->
   <div *ngIf="!isEditMode" class="preview-mode">
-    <!-- Подсвеченный код -->
-    <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
-    
-    <!-- Кнопка копирования -->
-    <div class="bottom-toolbar">
-      <button class="float-right"
+     <div class="code-container">
+        
+      <!-- Кнопка копирования -->
+      <button class="copy-btn"
               [cdkCopyToClipboard]="formattedCode"
               appearance="secondary"
               tuiIconButton
               icon="tuiIconCopyLarge"
-              type="button"></button>
+              type="button">
+      </button>
+      
+      <!-- Подсвеченный код -->
+      <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
     </div>
   </div>
 
