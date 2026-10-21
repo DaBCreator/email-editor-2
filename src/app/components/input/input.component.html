@@ -24,16 +24,19 @@
 
 <!-- ПАЛИТРА БЛОКОВ (Сгруппированная) -->
 <div class="groups-container">
-  
   <div class="block-group" *ngFor="let group of componentGroups">
     
-    <!-- Заголовок группы (клик для сворачивания) -->
-    <div class="group-header" (click)="toggleGroup(group)">
+    <!-- Заголовок группы теперь в виде кнопки Taiga UI -->
+    <button 
+      tuiButton 
+      appearance="secondary" 
+      size="m" 
+      class="group-header-btn"
+      (click)="toggleGroup(group)">
       <span class="group-title">{{ group.name }}</span>
       <tui-svg src="tuiIconChevronDown" class="group-icon" [class.open]="group.isOpen"></tui-svg>
-    </div>
+    </button>
 
-    <!-- Список кнопок внутри группы -->
     <div class="group-content" *ngIf="group.isOpen">
       <button *ngFor="let item of group.items" 
               (click)="addComponent(item)"
