@@ -8,10 +8,30 @@
   <!-- РЕЖИМ ПРОСМОТРА -->
 <div *ngIf="!isEditMode" class="preview-mode">
   <div class="code-container">
-    <button class="copy-btn" [cdkCopyToClipboard]="formattedCode" appearance="secondary" tuiIconButton icon="tuiIconCopyLarge" type="button"></button>
-    <div class="code-scroll-area">
-      <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
-    </div>
+  <!-- Блок с кнопками -->
+  <div class="action-buttons">
+    <!-- Кнопка Предпросмотр -->
+    <button class="action-btn"
+            tuiIconButton 
+            appearance="secondary" 
+            size="m" 
+            icon="tuiIconEye" 
+            type="button"
+            (click)="openPreview()">
+    </button>
+
+    <!-- Кнопка Копировать -->
+    <button class="action-btn"
+            [cdkCopyToClipboard]="formattedCode" 
+            appearance="secondary" 
+            tuiIconButton 
+            icon="tuiIconCopyLarge" 
+            type="button">
+    </button>
+  </div>
+
+  <div class="code-scroll-area">
+    <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
   </div>
 </div>
 
