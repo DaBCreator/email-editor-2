@@ -6,37 +6,37 @@
   </div>
 
   <!-- РЕЖИМ ПРОСМОТРА -->
-<div *ngIf="!isEditMode" class="preview-mode">
-  <div class="code-container">
-  <!-- Блок с кнопками -->
-  <div class="action-buttons">
-    <!-- Кнопка Предпросмотр -->
-   <div class="action-buttons">
-  <!-- Предпросмотр -->
-  <button class="action-btn"
-          tuiIconButton 
-          appearance="secondary" 
-          size="s" 
-          icon="tuiIconEye" 
-          type="button"
-          (click)="openPreview()">
-  </button>
+  <div *ngIf="!isEditMode" class="preview-mode">
+    <div class="code-container">
+      <!-- Блок с кнопками -->
+      <div class="action-buttons">
+        <!-- Предпросмотр -->
+        <button class="action-btn"
+                tuiIconButton 
+                appearance="secondary" 
+                size="m" 
+                icon="tuiIconEye" 
+                type="button"
+                (click)="openPreview()">
+        </button>
 
-  <!-- Копирование -->
-  <button class="action-btn"
-          [cdkCopyToClipboard]="formattedCode" 
-          appearance="secondary" 
-          tuiIconButton 
-          size="s"
-          icon="tuiIconCopyLarge" 
-          type="button">
-  </button>
-</div>
+        <!-- Копирование -->
+        <button class="action-btn"
+                [cdkCopyToClipboard]="formattedCode" 
+                appearance="secondary" 
+                tuiIconButton 
+                size="m"
+                icon="tuiIconCopyLarge" 
+                type="button">
+        </button>
+      </div>
 
-  <div class="code-scroll-area">
-    <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
+      <!-- Скроллируемая область -->
+      <div class="code-scroll-area">
+        <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
+      </div>
+    </div>
   </div>
-</div>
 
   <!-- РЕЖИМ РЕДАКТИРОВАНИЯ -->
   <div *ngIf="isEditMode" class="editor-mode">
