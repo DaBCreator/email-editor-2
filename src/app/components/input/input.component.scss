@@ -59,3 +59,65 @@
   right: 0;
   position: absolute;
 }
+
+.groups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  width: 100%;
+}
+
+.block-group {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f5f7fa;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+  font-weight: 600;
+  color: #333;
+
+  &:hover {
+    background-color: #eef2f7;
+  }
+}
+
+.group-icon {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  
+  &.open {
+    transform: rotate(180deg); /* Стрелочка крутится */
+  }
+}
+
+/* Сетка для кнопок внутри групп */
+.group-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Настройка самих кнопок */
+.block-btn {
+  flex: 1 1 calc(33.333% - 8px); /* По 3 кнопки в ряд */
+  min-width: 160px;
+  text-align: center;
+  white-space: normal; /* Чтобы длинные названия переносились */
+  height: auto;
+  min-height: 44px;
+  line-height: 1.2;
+}
