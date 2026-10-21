@@ -4,10 +4,11 @@ import { TuiButtonModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
 
 import { EditorView, basicSetup } from 'codemirror';
 import { html } from '@codemirror/lang-html';
-import { oneDark } from '@codemirror/theme-one-dark';
 
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css'; 
@@ -322,36 +323,57 @@ export class OutputComponent {
   }
 
   toggleEditMode() {
-    this.isEditMode = !this.isEditMode;
+  this.isEditMode = !this.isEditMode;
 
-    if (this.isEditMode) {
-      setTimeout(() => {
-        const el = document.getElementById('cm-editor-container');
-        if (el) {
-          this.editorView = new EditorView({
-            doc: this.formattedCode,
-            extensions: [
-              basicSetup,
-              html(),
-              oneDark,
-              EditorView.updateListener.of((update) => {
-                if (update.docChanged) {
-                  this.formattedCode = update.state.doc.toString();
-                  
-                  const newRawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
-                  this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(newRawHtml);
-                }
-              })
-            ],
-            parent: el
-          });
-        }
-      }, 0);
-    } else {
-      if (this.editorView) {
-        this.editorView.destroy();
-        this.editorView = null;
+  if (this.isEditMode) {
+    setTimeout(() => {
+      const el = document.getElementById('cm-editor-container');
+      if (el) {
+        this.editorView = new EditorView({
+          doc: this.formattedCode,
+          extensions: [
+            basicSetup,
+            html(),
+            
+            EditorView.theme({
+              "&": { backgroundColor: "#1e1e1e", color: "#d4d4d4" },
+              ".cm-gutters": { backgroundColor: "#1e1e1e", color: "#858585", borderRight: "1px solid #333" },
+              ".cm-activeLine": { backgroundColor: "#2a2a2a" },
+              ".cm-activeLineGutter": { backgroundColor: "#2a2a2a" },
+              ".cm-content": { caretColor: "#aeafad" },
+              ".cm-cursor": { borderLeftColor: "#aeafad" },
+            }, { dark: true }),
+            syntaxHighlighting(HighlightStyle.define([
+              { tag: tags.tagName, color: "#569cd6" },       
+              { tag: tags.angleBracket, color: "#808080" },  
+              { tag: tags.attributeName, color: "#9cdcfe" }, 
+              { tag: tags.string, color: "#ce9178" },        
+              { tag: tags.comment, color: "#608b4e", fontStyle: "italic" }, 
+              { tag: tags.number, color: "#b5cea8" },        
+              { tag: tags.propertyName, color: "#9cdcfe" },  
+              { tag: tags.keyword, color: "#c586c0" },       
+              { tag: tags.punctuation, color: "#d4d4d4" },   
+              { tag: tags.meta, color: "#569cd6" },          
+            ])),
+            
+            EditorView.updateListener.of((update) => {
+              if (update.docChanged) {
+                this.formattedCode = update.state.doc.toString();
+                
+                const newRawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+                this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(newRawHtml);
+              }
+            })
+          ],
+          parent: el
+        });
       }
+    }, 0);
+  } else {
+    if (this.editorView) {
+      this.editorView.destroy();
+      this.editorView = null;
     }
   }
+}
 }
