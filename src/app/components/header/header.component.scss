@@ -1,11 +1,8 @@
-.scroll-to-code-btn {
-  position: sticky !important;
-  top: 24px !important;
-  z-index: 9999 !important;
-  float: left;
-  margin-left: 24px;
-  margin-top: 24px;        
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.scroll-btn-absolute {
+  position: absolute; 
+  left: 24px;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .header-title-wrapper {
