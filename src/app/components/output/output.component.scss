@@ -20,11 +20,11 @@
 }
 
 .code-container {
-  position: relative; /* ⬅️ Важно для абсолютного позиционирования кнопки */
+  position: relative;
   flex: 1;
   border: 2px solid black;
   background-color: #f8f8f8;
-  overflow: hidden; /* Скрываем всё, что вылезает */
+  overflow: hidden;
 }
 
 /* Кнопка копирования */
@@ -44,17 +44,11 @@
 /* Стили для <pre> */
 .preview-mode pre {
   margin: 0;
-  padding: 16px 48px 16px 16px; /* Справа отступ 48px, чтобы текст не прятался под кнопкой */
+  padding: 16px 48px 16px 16px;
   height: 100%;
   overflow: auto;
   white-space: pre-wrap;
   word-break: break-all;
-}
-
-/* Светлая тема highlight.js */
-.hljs {
-  background: transparent !important;
-  color: #24292e;
 }
 
 /* Режим редактирования */
@@ -78,38 +72,43 @@
   overflow: auto;
 }
 
-/* Явно задаем цвета для подсветки, чтобы они точно сработали */
-.hljs {
+/* ЦВЕТА ДЛЯ ПОДСВЕТКИ */
+
+::ng-deep .hljs {
   color: #24292e;
-  background: transparent;
+  background: transparent !important;
 }
 
-.hljs-tag,
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-section,
-.hljs-link {
-  color: #d73a49; /* Красный для тегов, как в GitHub */
+::ng-deep .hljs-tag,
+::ng-deep .hljs-keyword,
+::ng-deep .hljs-selector-tag,
+::ng-deep .hljs-literal,
+::ng-deep .hljs-section,
+::ng-deep .hljs-link {
+  color: #d73a49; /* Красный для тегов */
 }
 
-.hljs-string,
-.hljs-title,
-.hljs-name,
-.hljs-type,
-.hljs-attribute,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-tag,
-.hljs-template-variable {
+::ng-deep .hljs-string,
+::ng-deep .hljs-title,
+::ng-deep .hljs-name,
+::ng-deep .hljs-type,
+::ng-deep .hljs-attribute,
+::ng-deep .hljs-symbol,
+::ng-deep .hljs-bullet,
+::ng-deep .hljs-addition,
+::ng-deep .hljs-variable,
+::ng-deep .hljs-template-tag,
+::ng-deep .hljs-template-variable {
   color: #032f62; /* Темно-синий для строк и атрибутов */
 }
 
-.hljs-comment,
-.hljs-quote,
-.hljs-deletion,
-.hljs-meta {
+::ng-deep .hljs-comment,
+::ng-deep .hljs-quote,
+::ng-deep .hljs-deletion,
+::ng-deep .hljs-meta {
   color: #6a737d; /* Серый для комментариев */
+}
+
+::ng-deep .hljs-attr {
+  color: #005cc5; /* Ярко-синий для атрибутов */
 }
