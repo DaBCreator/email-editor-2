@@ -9,10 +9,12 @@ import { TuiButtonModule } from '@taiga-ui/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
- scrollToEditor() {
-    const el = document.getElementById('cm-editor-container');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+scrollToEditor() {
+  const el = document.getElementById('output-container');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    console.warn('Элемент #output-container не найден!');
     }
   }
 }
