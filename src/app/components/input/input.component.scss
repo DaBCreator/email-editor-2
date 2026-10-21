@@ -76,31 +76,30 @@
   gap: 12px;
 }
 
-/* Заголовок группы (кнопка) */
+/* Кнопка-заголовок */
 .group-header-btn {
-  width: 100%;
-  display: flex;
-  justify-content: space-between !important; 
-  align-items: center;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
   padding: 12px 16px !important;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   border-radius: 12px;
-  background-color: #f3f4f6;
-  color: #333;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #e5e7eb;
-  }
 }
 
+/* Текст группы */
+.group-title {
+  text-align: left;
+}
+
+/* Иконка */
 .group-icon {
-  width: 20px;
-  height: 20px;
+  width: 20px !important;
+  height: 20px !important;
   transition: transform 0.3s ease;
   
   &.open {
-    transform: rotate(180deg);
+    transform: rotate(180deg) !important;
   }
 }
 
@@ -112,10 +111,10 @@
   width: 100%;
 }
 
-/* Настройка самих кнопок */
+/* Кнопки внутри */
 .block-btn {
   flex: 1 1 calc(33.333% - 12px);
-  min-width: 200px;
+  min-width: 180px;
   text-align: center;
   white-space: normal;
   height: auto;
