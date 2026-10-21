@@ -22,11 +22,28 @@
   </tui-tile>
 </tui-tiles>
 
-<button *ngFor="let component of components"
-        appearance="primary"
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        (click)=addComponent(component)>
-  {{component.name}}
-</button>
+<!-- ПАЛИТРА БЛОКОВ (Сгруппированная) -->
+<div class="groups-container">
+  
+  <div class="block-group" *ngFor="let group of componentGroups">
+    
+    <!-- Заголовок группы (клик для сворачивания) -->
+    <div class="group-header" (click)="toggleGroup(group)">
+      <span class="group-title">{{ group.name }}</span>
+      <span class="group-icon" [class.open]="group.isOpen">▼</span>
+    </div>
+
+    <!-- Список кнопок внутри группы -->
+    <div class="group-content" *ngIf="group.isOpen">
+      <button *ngFor="let item of group.items" 
+              (click)="addComponent(item)"
+              appearance="primary"
+              tuiButton
+              type="button"
+              class="block-btn">
+        {{ item.name }}
+      </button>
+    </div>
+    
+  </div>
+</div>
