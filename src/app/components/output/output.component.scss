@@ -1,11 +1,3 @@
-pre {
-  display: block;
-  border: 2px solid black;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-/* Новые стили для CodeMirror и раскладки */
 .output-container {
   display: flex;
   flex-direction: column;
@@ -14,12 +6,39 @@ pre {
 }
 
 .toolbar {
-  flex-shrink: 0;
+  margin-bottom: 8px;
 }
 
 .preview-mode {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 2px solid black;
+  background-color: #f8f8f8;
+}
+
+.preview-mode pre {
+  margin: 0;
+  padding: 12px;
+  flex: 1;
   overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  border: none;
+}
+
+.hljs {
+  background: transparent;
+}
+
+/* Панель с кнопкой копирования */
+.bottom-toolbar {
+  padding: 8px;
+  background: #eee;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .editor-mode {
@@ -36,7 +55,6 @@ pre {
   font-size: 14px;
 }
 
-/* Настройка прокрутки в CodeMirror */
 .cm-scroller {
   overflow: auto;
 }
