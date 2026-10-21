@@ -117,3 +117,78 @@
 ::ng-deep .preview-mode .hljs-meta {
   color: #a0522d;
 }
+
+/* ЦВЕТА ДЛЯ CODEMIRROR (Тёмная тема Visual Studio) */
+
+/* Тёмный фон редактора */
+.cm-editor {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important; /* Основной текст — светло-серый */
+}
+
+/* Номера строк */
+.cm-gutters {
+  background-color: #1e1e1e !important;
+  color: #858585 !important;
+  border-right: 1px solid #333 !important;
+}
+
+/* Подсветка активной строки */
+.cm-activeLine {
+  background-color: #2a2a2a !important;
+}
+.cm-activeLineGutter {
+  background-color: #2a2a2a !important;
+}
+
+/* --- ПОДСВЕТКА СИНТАКСИСА --- */
+
+/* 1. Теги (<html>, <head>, <meta>) — Светло-голубой */
+.cm-editor .ͼb, 
+.cm-editor .ͼc,
+.cm-editor .tok-tag,
+.cm-editor .tok-angle-bracket {
+  color: #569cd6 !important; 
+}
+
+/* 2. Названия тегов и атрибуты — Чуть светлее голубого */
+.cm-editor .ͼd, 
+.cm-editor .tok-attribute-name,
+.cm-editor .tok-name {
+  color: #9cdcfe !important; 
+}
+
+/* 3. Строки ("text/html", "utf-8") — Оранжево-коричневый */
+.cm-editor .ͼe, 
+.cm-editor .tok-string,
+.cm-editor .tok-string2 {
+  color: #ce9178 !important; 
+}
+
+/* 4. Свойства и ключевые слова (color-scheme: dark) — Голубой */
+.cm-editor .ͼf, 
+.cm-editor .tok-property-name,
+.cm-editor .tok-keyword {
+  color: #9cdcfe !important; 
+}
+
+/* 5. Комментарии (<!DOCTYPE html>, <!-- start -->) — Тёмно-зелёный */
+.cm-editor .ͼg, 
+.cm-editor .tok-comment {
+  color: #608b4e !important; 
+}
+
+/* 6. Значения (light dark, 0, 100%) — Светло-зелёный */
+.cm-editor .ͼh, 
+.cm-editor .tok-number,
+.cm-editor .tok-literal,
+.cm-editor .tok-atom {
+  color: #b5cea8 !important; 
+}
+
+/* 7. Скобки и операторы (<, >, =, :) — Серый */
+.cm-editor .ͼi, 
+.cm-editor .tok-punctuation,
+.cm-editor .tok-operator {
+  color: #d4d4d4 !important; 
+}
