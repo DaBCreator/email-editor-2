@@ -328,29 +328,35 @@ export class OutputComponent {
         const el = document.getElementById('cm-editor-container');
         if (el) {
           this.editorView = new EditorView({
-  doc: this.formattedCode,
-  extensions: [
-    basicSetup,
-    html(),
-    EditorView.theme({
-      "&": { backgroundColor: "#020304", color: "#BBBEBF" },
-      ".cm-gutters": { backgroundColor: "#020304", color: "#858889", borderRight: "1px solid #131415" },
-      ".cm-activeLine": { backgroundColor: "#0e0f10" },
-      ".cm-activeLineGutter": { backgroundColor: "#0e0f10" },
-      ".cm-content": { caretColor: "#BBBEBF" },
-      ".cm-cursor": { borderLeftColor: "#BBBEBF" },
-    }, { dark: true }),
-    EditorView.updateListener.of((update) => { ... })
-  ],
-  parent: el
-});
+            doc: this.formattedCode,
+            extensions: [
+              basicSetup,
+              html(),
+              EditorView.theme({
+                "&": { backgroundColor: "#020304", color: "#BBBEBF" },
+                ".cm-gutters": { backgroundColor: "#020304", color: "#858889", borderRight: "1px solid #131415" },
+                ".cm-activeLine": { backgroundColor: "#0e0f10" },
+                ".cm-activeLineGutter": { backgroundColor: "#0e0f10" },
+                ".cm-content": { caretColor: "#BBBEBF" },
+                ".cm-cursor": { borderLeftColor: "#BBBEBF" },
+              }, { dark: true }),
+              EditorView.updateListener.of((update) => {
+                if (update.docChanged) {
+                  this.formattedCode = update.state.doc.toString();
+                  const newRawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
+                  this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(newRawHtml);
+                }
+              })
+            ],
+            parent: el
+          });
         }
       }, 0);
     } else {
       if (this.editorView) {
         this.editorView.destroy();
         this.editorView = null;
-        }
+      }
     }
   }
 }
