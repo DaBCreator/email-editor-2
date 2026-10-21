@@ -6,12 +6,14 @@
   </div>
 
   <!-- РЕЖИМ ПРОСМОТРА -->
-  <div *ngIf="!isEditMode" class="preview-mode">
-    <div class="code-container">
-      <button class="copy-btn" [cdkCopyToClipboard]="formattedCode" appearance="secondary" tuiIconButton icon="tuiIconCopyLarge" type="button"></button>
+<div *ngIf="!isEditMode" class="preview-mode">
+  <div class="code-container">
+    <button class="copy-btn" [cdkCopyToClipboard]="formattedCode" appearance="secondary" tuiIconButton icon="tuiIconCopyLarge" type="button"></button>
+    <div class="code-scroll-area">
       <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
     </div>
   </div>
+</div>
 
   <!-- РЕЖИМ РЕДАКТИРОВАНИЯ -->
   <div *ngIf="isEditMode" class="editor-mode">
