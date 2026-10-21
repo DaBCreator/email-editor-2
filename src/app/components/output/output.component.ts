@@ -344,18 +344,23 @@ export class OutputComponent {
               }, { dark: true }),
               
               syntaxHighlighting(HighlightStyle.define([
-                { tag: tags.tagName, color: "#569cd6" },       // Теги (<html>, <div>)
-                { tag: tags.angleBracket, color: "#808080" },  // Скобки (<, >)
+                // Теги (<html>, <div>, <meta>) - голубые
+                { tag: tags.tagName, color: "#569cd6" },       
+                { tag: tags.angleBracket, color: "#808080" },  // Скобки < >
                 { tag: tags.attributeName, color: "#9cdcfe" }, // Атрибуты (class, style)
                 { tag: tags.string, color: "#ce9178" },        // Строки ("utf-8")
                 { tag: tags.comment, color: "#6A9955", fontStyle: "italic" }, // Комментарии
                 { tag: tags.number, color: "#b5cea8" },        // Числа (100px)
                 { tag: tags.propertyName, color: "#9cdcfe" },  // Свойства CSS
                 { tag: tags.keyword, color: "#569cd6" },       // Ключевые слова
-                { tag: tags.punctuation, color: "#D4D4D4" },   // Пунктуация
-                { tag: tags.meta, color: "#569cd6" },          // <!DOCTYPE>
+                { tag: tags.meta, color: "#569cd6" },          // <!DOCTYPE>                
+                { tag: tags.processingInstruction, color: "#569cd6" },
+                { tag: tags.definitionKeyword, color: "#569cd6" },
+                { tag: tags.moduleKeyword, color: "#569cd6" },
+                { tag: tags.standard(tags.name), color: "#569cd6" },
+                { tag: tags.standard(tags.tagName), color: "#569cd6" },
+                { tag: tags.punctuation, color: "#D4D4D4" },   
               ])),
-              // ⬆️ КОНЕЦ ТЕМЫ ⬆️
               
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
