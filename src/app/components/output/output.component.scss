@@ -5,11 +5,14 @@
   min-height: 500px;
 }
 
+/* Тулбар */
 .toolbar {
+  display: flex;
+  justify-content: flex-end; /* Прижимаем вправо */
   margin-bottom: 8px;
 }
 
-/* Контейнер для кода и кнопки */
+/* Контейнер с кодом */
 .preview-mode {
   flex: 1;
   display: flex;
@@ -17,20 +20,20 @@
 }
 
 .code-container {
-  position: relative;
+  position: relative; /* ⬅️ Важно для абсолютного позиционирования кнопки */
   flex: 1;
   border: 2px solid black;
   background-color: #f8f8f8;
-  overflow: hidden;
+  overflow: hidden; /* Скрываем всё, что вылезает */
 }
 
-/* Кнопка копирования поверх кода */
+/* Кнопка копирования */
 .copy-btn {
   position: absolute;
   top: 8px;
   right: 8px;
   z-index: 10;
-  opacity: 0.7;
+  opacity: 0.6;
   transition: opacity 0.2s ease;
   
   &:hover {
@@ -38,10 +41,10 @@
   }
 }
 
-/* Стили для блока <pre> */
+/* Стили для <pre> */
 .preview-mode pre {
   margin: 0;
-  padding: 16px 48px 16px 16px; /* Отступ справа больше, чтобы текст не заезжал под кнопку */
+  padding: 16px 48px 16px 16px; /* Справа отступ 48px, чтобы текст не прятался под кнопкой */
   height: 100%;
   overflow: auto;
   white-space: pre-wrap;
