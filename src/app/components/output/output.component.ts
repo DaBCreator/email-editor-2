@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { EditorView, basicSetup } from 'codemirror';
-import { html } from '@codemirror/lang-html'; // Оставляем для структуры
+import { html } from '@codemirror/lang-html';
+import { githubDark } from '@uiw/codemirror-theme-github';
 import hljs from 'highlight.js';
 
 @Component({
@@ -299,7 +300,7 @@ export class OutputComponent {
 </html>
  `;
 
- constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnChanges(changes: SimpleChanges) {
     (async () => {
@@ -308,9 +309,9 @@ export class OutputComponent {
       this.updateHighlight();
       
       if (this.editorView) {
-         this.editorView.dispatch({
-           changes: { from: 0, to: this.editorView.state.doc.length, insert: this.formattedCode }
-         });
+        this.editorView.dispatch({
+          changes: { from: 0, to: this.editorView.state.doc.length, insert: this.formattedCode }
+        });
       }
     })().catch(console.error);
   }
@@ -326,7 +327,8 @@ export class OutputComponent {
             doc: this.formattedCode,
             extensions: [
               basicSetup,
-              html(), // Убираем, чтобы не было конфликта цветов
+              html(),
+              githubDark,
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
                   this.formattedCode = update.state.doc.toString();
