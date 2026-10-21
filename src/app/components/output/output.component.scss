@@ -1,3 +1,6 @@
+/* Импортируем официальную тему One Light из highlight.js */
+@import 'highlight.js/styles/base16/one-light.css';
+
 /* --- ОБЩИЕ СТИЛИ --- */
 .output-container {
   display: flex;
@@ -22,8 +25,9 @@
   height: 500px;
   resize: vertical;
   overflow: auto;
-  border: 2px solid #ccc;
-  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: #fafafa;
 }
 
 .copy-btn {
@@ -44,16 +48,8 @@
   min-height: 100%;
   white-space: pre-wrap;
   word-break: break-all;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }
-
-/* Цвета в режиме просмотра */
-::ng-deep .hljs { color: #333333; background: transparent !important; }
-::ng-deep .hljs-tag { color: #0000ff; }
-::ng-deep .hljs-name { color: #800080; }
-::ng-deep .hljs-attr { color: #ff0000; }
-::ng-deep .hljs-string { color: #00008b; }
-::ng-deep .hljs-comment { color: #008000; }
-::ng-deep .hljs-meta { color: #a0522d; }
 
 /* --- РЕЖИМ РЕДАКТИРОВАНИЯ (CodeMirror) --- */
 .editor-mode {
@@ -69,7 +65,6 @@
   height: 100%;
 }
 
-/* Настройка высоты и скролла для CodeMirror */
 ::ng-deep .cm-editor {
   height: 100% !important;
 }
