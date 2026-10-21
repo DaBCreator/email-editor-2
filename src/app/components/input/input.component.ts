@@ -163,5 +163,3 @@ export class InputComponent {
     return code
   }
 }
-
-
