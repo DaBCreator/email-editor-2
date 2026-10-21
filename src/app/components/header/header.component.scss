@@ -1,0 +1,14 @@
+.scroll-to-code-btn {
+  position: fixed !important;
+  top: 24px;               
+  left: 24px;                 
+  z-index: 9999;              
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header-title-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
