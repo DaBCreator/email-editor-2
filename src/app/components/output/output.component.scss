@@ -74,41 +74,60 @@
 
 /* ЦВЕТА ДЛЯ ПОДСВЕТКИ */
 
-::ng-deep .hljs {
-  color: #24292e;
+/* Базовый текст */
+::ng-deep .preview-mode .hljs {
+  color: #333333; /* Мягкий тёмно-серый */
   background: transparent !important;
 }
 
-::ng-deep .hljs-tag,
-::ng-deep .hljs-keyword,
-::ng-deep .hljs-selector-tag,
-::ng-deep .hljs-literal,
-::ng-deep .hljs-section,
-::ng-deep .hljs-link {
-  color: #d73a49; /* Красный для тегов */
+/* Теги (<html>, <table>, <div>) — насыщенный синий */
+::ng-deep .preview-mode .hljs-tag,
+::ng-deep .preview-mode .hljs-keyword,
+::ng-deep .preview-mode .hljs-selector-tag,
+::ng-deep .preview-mode .hljs-literal,
+::ng-deep .preview-mode .hljs-section {
+  color: #2b70c9; 
 }
 
-::ng-deep .hljs-string,
-::ng-deep .hljs-title,
-::ng-deep .hljs-name,
-::ng-deep .hljs-type,
-::ng-deep .hljs-attribute,
-::ng-deep .hljs-symbol,
-::ng-deep .hljs-bullet,
-::ng-deep .hljs-addition,
-::ng-deep .hljs-variable,
-::ng-deep .hljs-template-tag,
-::ng-deep .hljs-template-variable {
-  color: #032f62; /* Темно-синий для строк и атрибутов */
+/* Названия тегов (html, body, table) */
+::ng-deep .preview-mode .hljs-name {
+  color: #1a5eb3;
 }
 
-::ng-deep .hljs-comment,
-::ng-deep .hljs-quote,
-::ng-deep .hljs-deletion,
-::ng-deep .hljs-meta {
-  color: #6a737d; /* Серый для комментариев */
+/* Атрибуты (class, style, src) — бирюзовый */
+::ng-deep .preview-mode .hljs-attr,
+::ng-deep .preview-mode .hljs-attribute {
+  color: #1c9bc2; 
 }
 
-::ng-deep .hljs-attr {
-  color: #005cc5; /* Ярко-синий для атрибутов */
+/* Значения атрибутов и строки ("...", "container") — зелёный */
+::ng-deep .preview-mode .hljs-string,
+::ng-deep .preview-mode .hljs-title,
+::ng-deep .preview-mode .hljs-type,
+::ng-deep .preview-mode .hljs-symbol,
+::ng-deep .preview-mode .hljs-bullet,
+::ng-deep .preview-mode .hljs-addition,
+::ng-deep .preview-mode .hljs-variable,
+::ng-deep .preview-mode .hljs-template-tag,
+::ng-deep .preview-mode .hljs-template-variable {
+  color: #4ea362; 
+}
+
+/* Комментарии (<!-- start: header -->) — серо-зелёный курсив */
+::ng-deep .preview-mode .hljs-comment,
+::ng-deep .preview-mode .hljs-quote,
+::ng-deep .preview-mode .hljs-deletion {
+  color: #8b9aa3; 
+  font-style: italic;
+}
+
+/* Мета-теги (!DOCTYPE) — фиолетовый */
+::ng-deep .preview-mode .hljs-meta {
+  color: #9c4d9e;
+}
+
+/* Спецсимволы (&nbsp;, &bull;) — оранжевый */
+::ng-deep .preview-mode .hljs-entity,
+::ng-deep .preview-mode .hljs-symbol {
+  color: #d68a36;
 }
