@@ -30,7 +30,7 @@
     <!-- Заголовок группы (клик для сворачивания) -->
     <div class="group-header" (click)="toggleGroup(group)">
       <span class="group-title">{{ group.name }}</span>
-      <span class="group-icon" [class.open]="group.isOpen">▼</span>
+      <tui-svg src="tuiIconChevronDown" class="group-icon" [class.open]="group.isOpen"></tui-svg>
     </div>
 
     <!-- Список кнопок внутри группы -->
