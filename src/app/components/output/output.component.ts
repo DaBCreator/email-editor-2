@@ -4,11 +4,10 @@ import { TuiButtonModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { vscodeDark } from '@uiw/codemirror-theme-vscode';
-
+import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
 import { EditorView, basicSetup } from 'codemirror';
 import { html } from '@codemirror/lang-html';
-
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css'; 
 
@@ -333,7 +332,31 @@ export class OutputComponent {
             extensions: [
               basicSetup,
               html(),
-              vscodeDark,
+              
+              EditorView.theme({
+                "&": { backgroundColor: "#020304", color: "#BBBEBF" }, // Фон и текст
+                ".cm-gutters": { backgroundColor: "#020304", color: "#858889", borderRight: "1px solid #131415" },
+                ".cm-activeLine": { backgroundColor: "#0e0f10" },
+                ".cm-activeLineGutter": { backgroundColor: "#0e0f10" },
+                ".cm-content": { caretColor: "#BBBEBF" },
+                ".cm-cursor": { borderLeftColor: "#BBBEBF" },
+                ".cm-selectionBackground, ::selection": { backgroundColor: "#27678260 !important" },
+              }, { dark: true }),
+              
+              syntaxHighlighting(HighlightStyle.define([
+                { tag: tags.tagName, color: "#569cd6" },       // Теги (<html>, <div>)
+                { tag: tags.angleBracket, color: "#808080" },  // Скобки (<, >)
+                { tag: tags.attributeName, color: "#9cdcfe" }, // Атрибуты (class, style)
+                { tag: tags.string, color: "#ce9178" },        // Строки ("utf-8")
+                { tag: tags.comment, color: "#6A9955", fontStyle: "italic" }, // Комментарии
+                { tag: tags.number, color: "#b5cea8" },        // Числа (100px)
+                { tag: tags.propertyName, color: "#9cdcfe" },  // Свойства CSS
+                { tag: tags.keyword, color: "#569cd6" },       // Ключевые слова
+                { tag: tags.punctuation, color: "#D4D4D4" },   // Пунктуация
+                { tag: tags.meta, color: "#569cd6" },          // <!DOCTYPE>
+              ])),
+              // ⬆️ КОНЕЦ ТЕМЫ ⬆️
+              
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
                   this.formattedCode = update.state.doc.toString();
@@ -353,4 +376,3 @@ export class OutputComponent {
       }
     }
   }
-}
