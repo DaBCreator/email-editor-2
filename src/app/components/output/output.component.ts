@@ -331,7 +331,8 @@ export class OutputComponent {
             doc: this.formattedCode,
             extensions: [
               basicSetup,
-              html(),
+              html(), // ⬅️ Возвращаем встроенный парсер HTML
+              
               EditorView.theme({
                 "&": { backgroundColor: "#020304", color: "#BBBEBF" },
                 ".cm-gutters": { backgroundColor: "#020304", color: "#858889", borderRight: "1px solid #131415" },
@@ -339,7 +340,20 @@ export class OutputComponent {
                 ".cm-activeLineGutter": { backgroundColor: "#0e0f10" },
                 ".cm-content": { caretColor: "#BBBEBF" },
                 ".cm-cursor": { borderLeftColor: "#BBBEBF" },
+                
+                // ⬇️ ВОТ ГЛАВНЫЙ ФИКС ДЛЯ ЦВЕТОВ ⬇️
+                // Мы переопределяем стандартные переменные CodeMirror
+                ".cm-tagName": { color: "#569cd6 !important" },
+                ".cm-attributeName": { color: "#9cdcfe !important" },
+                ".cm-string": { color: "#ce9178 !important" },
+                ".cm-comment": { color: "#6A9955 !important", fontStyle: "italic" },
+                ".cm-number": { color: "#b5cea8 !important" },
+                ".cm-propertyName": { color: "#9cdcfe !important" },
+                ".cm-keyword": { color: "#569cd6 !important" },
+                ".cm-punctuation": { color: "#D4D4D4 !important" },
+                ".cm-angleBracket": { color: "#808080 !important" },
               }, { dark: true }),
+              
               EditorView.updateListener.of((update) => {
                 if (update.docChanged) {
                   this.formattedCode = update.state.doc.toString();
