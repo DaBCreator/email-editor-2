@@ -7,27 +7,70 @@
 .copy-btn { position: absolute; top: 8px; right: 8px; z-index: 10; opacity: 0.6; &:hover { opacity: 1; } }
 .preview-mode pre { margin: 0; padding: 16px; min-height: 100%; white-space: pre-wrap; word-break: break-all; }
 
-/* --- РЕДАКТИРОВАНИЕ --- */
-.editor-mode { width: 100%; height: 500px; resize: vertical; overflow: hidden; border: 1px solid #444; border-radius: 4px; }
-.fake-editor-wrapper { position: relative; width: 100%; height: 100%; background-color: #020304; }
-.fake-editor-wrapper pre, .fake-editor-wrapper textarea {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; padding: 16px;
-  font-family: monospace; font-size: 14px; line-height: 1.5; white-space: pre; overflow: auto;
-  box-sizing: border-box; border: none; outline: none;
-}
-.fake-editor-highlight { pointer-events: none; z-index: 1; }
-.fake-editor-input { z-index: 2; color: transparent !important; background: transparent !important; caret-color: #BBBEBF; resize: none; }
-.fake-editor-input::selection { background-color: #276782dd !important; color: transparent !important; }
-.fake-editor-input::-webkit-scrollbar { width: 14px; height: 14px; }
-.fake-editor-highlight::-webkit-scrollbar { display: none; }
+/* --- ЦВЕТА ДЛЯ ПРОСМОТРА (Светлая тема) --- */
+::ng-deep .hljs { color: #333333; background: transparent !important; }
+::ng-deep .hljs-tag { color: #0000ff; }
+::ng-deep .hljs-name { color: #800080; }
+::ng-deep .hljs-attr { color: #ff0000; }
+::ng-deep .hljs-string { color: #00008b; }
+::ng-deep .hljs-comment { color: #008000; }
+::ng-deep .hljs-meta { color: #a0522d; }
 
-/* --- ЦВЕТА ПОДСВЕТКИ --- */
-::ng-deep .hljs { color: #BBBEBF; background: transparent !important; }
-::ng-deep .hljs-tag, ::ng-deep .hljs-name, ::ng-deep .hljs-selector-tag { color: #569cd6; } /* Теги */
-::ng-deep .hljs-attr { color: #9cdcfe; } /* Атрибуты */
-::ng-deep .hljs-string { color: #ce9178; } /* Строки */
-::ng-deep .hljs-comment { color: #6A9955; font-style: italic; } /* Комментарии */
-::ng-deep .hljs-number { color: #b5cea8; } /* Числа */
-::ng-deep .hljs-meta { color: #808080; } /* DOCTYPE, скобки */
-::ng-deep .hljs-attribute { color: #9cdcfe; }
-::ng-deep .hljs-variable { color: #9cdcfe; }
+/* --- РЕДАКТИРОВАНИЕ (CodeMirror) --- */
+.editor-mode {
+  width: 100%;
+  height: 500px;
+  resize: vertical;
+  overflow: hidden;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #1e1e1e; /* Тёмно-серый, как ты просил */
+}
+
+#cm-editor-container {
+  height: 100%;
+}
+
+::ng-deep .cm-editor {
+  height: 100% !important;
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+/* Номера строк и полоса слева */
+::ng-deep .cm-gutters {
+  background-color: #1e1e1e !important;
+  color: #858585 !important;
+  border-right: 1px solid #333 !important;
+}
+
+/* Подсветка активной строки */
+::ng-deep .cm-activeLine {
+  background-color: #2a2a2a !important;
+}
+::ng-deep .cm-activeLineGutter {
+  background-color: #2a2a2a !important;
+}
+
+/* Курсор */
+::ng-deep .cm-cursor {
+  border-left-color: #aeafad !important;
+}
+
+/* Скролл */
+::ng-deep .cm-scroller {
+  overflow: auto !important;
+}
+
+/* ⬇️ ЖЕСТКАЯ ПЕРЕКРАСКА ТЕКСТА ⬇️ */
+/* Если мы убрали html(), CodeMirror видит просто текст, поэтому красим базовые токены */
+::ng-deep .cm-tagName,
+::ng-deep .cm-tag,
+::ng-deep .cm-angleBracket,
+::ng-deep .cm-punctuation { color: #569cd6 !important; }
+
+::ng-deep .cm-attributeName,
+::ng-deep .cm-attribute { color: #9cdcfe !important; }
+
+::ng-deep .cm-string { color: #ce9178 !important; }
+::ng-deep .cm-comment { color: #6A9955 !important; font-style: italic; }
