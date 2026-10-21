@@ -348,6 +348,14 @@ export class OutputComponent {
     }
   }
 
+    openPreview() {
+    const newWindow = window.open('', '_blank');
+    if (newWindow) {
+      newWindow.document.write(this.formattedCode);
+      newWindow.document.close();
+    }
+  }
+
   private updateHighlight() {
     const rawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
     this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
