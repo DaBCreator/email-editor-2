@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TuiButtonModule } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [TuiButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
