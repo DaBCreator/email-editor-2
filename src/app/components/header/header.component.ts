@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TuiButtonModule } from '@taiga-ui/core';
 
 @Component({
@@ -9,12 +10,23 @@ import { TuiButtonModule } from '@taiga-ui/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-scrollToEditor() {
-  const el = document.getElementById('output-container');
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } else {
-    console.warn('Элемент #output-container не найден!');
+  buttonTop = 24; 
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.buttonTop = window.scrollY + 24;
+    }
+  }
+
+  scrollToEditor() {
+    const el = document.getElementById('output-container');
+    if (el) {
+      const yOffset = -20;
+      const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
 }
