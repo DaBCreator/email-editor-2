@@ -1,9 +1,11 @@
-import { Component, Input, SimpleChanges, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TuiButtonModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { EditorView, basicSetup } from 'codemirror';
+import { html } from '@codemirror/lang-html'; // Оставляем для структуры
 import hljs from 'highlight.js';
 
 @Component({
@@ -13,15 +15,14 @@ import hljs from 'highlight.js';
   templateUrl: './output.component.html',
   styleUrl: './output.component.scss'
 })
-export class OutputComponent implements AfterViewChecked {
+export class OutputComponent {
   @Input() code = '';
-  @ViewChild('codeTextarea') textarea!: ElementRef<HTMLTextAreaElement>;
-  @ViewChild('codePre') pre!: ElementRef<HTMLElement>;
-
+  
   formattedCode = '';
   highlightedCode: SafeHtml = '';
   isEditMode = false;
-
+  editorView: EditorView | null = null;
+  
   prefix = `
 <html>
 
@@ -298,41 +299,55 @@ export class OutputComponent implements AfterViewChecked {
 </html>
  `;
 
-  constructor(private sanitizer: DomSanitizer) {}
+ constructor(private sanitizer: DomSanitizer) {}
 
   ngOnChanges(changes: SimpleChanges) {
     (async () => {
       const beautify = await import('js-beautify');
       this.formattedCode = beautify.default.html(this.prefix + changes['code'].currentValue + this.suffix, {});
       this.updateHighlight();
+      
+      if (this.editorView) {
+         this.editorView.dispatch({
+           changes: { from: 0, to: this.editorView.state.doc.length, insert: this.formattedCode }
+         });
+      }
     })().catch(console.error);
-  }
-
-  ngAfterViewChecked() {
-    if (this.isEditMode) {
-      this.syncScroll();
-    }
   }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
-  }
 
-  onInput(event: Event) {
-    const textarea = event.target as HTMLTextAreaElement;
-    this.formattedCode = textarea.value;
-    this.updateHighlight();
+    if (this.isEditMode) {
+      setTimeout(() => {
+        const el = document.getElementById('cm-editor-container');
+        if (el) {
+          this.editorView = new EditorView({
+            doc: this.formattedCode,
+            extensions: [
+              basicSetup,
+              // html(), // Убираем, чтобы не было конфликта цветов
+              EditorView.updateListener.of((update) => {
+                if (update.docChanged) {
+                  this.formattedCode = update.state.doc.toString();
+                  this.updateHighlight();
+                }
+              })
+            ],
+            parent: el
+          });
+        }
+      }, 0);
+    } else {
+      if (this.editorView) {
+        this.editorView.destroy();
+        this.editorView = null;
+      }
+    }
   }
 
   private updateHighlight() {
     const rawHtml = hljs.highlight(this.formattedCode, { language: 'xml' }).value;
     this.highlightedCode = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
-  }
-
-  syncScroll() {
-    if (this.textarea && this.pre) {
-      this.pre.nativeElement.scrollTop = this.textarea.nativeElement.scrollTop;
-      this.pre.nativeElement.scrollLeft = this.textarea.nativeElement.scrollLeft;
-    }
   }
 }
