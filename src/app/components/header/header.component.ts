@@ -1,5 +1,4 @@
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component } from '@angular/core';
 import { TuiButtonModule } from '@taiga-ui/core';
 
 @Component({
@@ -10,17 +9,6 @@ import { TuiButtonModule } from '@taiga-ui/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  buttonTop = 24; 
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.buttonTop = window.scrollY + 24;
-    }
-  }
-
   scrollToEditor() {
     const el = document.getElementById('output-container');
     if (el) {
