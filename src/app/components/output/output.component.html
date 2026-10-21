@@ -11,24 +11,27 @@
   <!-- Блок с кнопками -->
   <div class="action-buttons">
     <!-- Кнопка Предпросмотр -->
-    <button class="action-btn"
-            tuiIconButton 
-            appearance="secondary" 
-            size="m" 
-            icon="tuiIconEye" 
-            type="button"
-            (click)="openPreview()">
-    </button>
+   <div class="action-buttons">
+  <!-- Предпросмотр -->
+  <button class="action-btn"
+          tuiIconButton 
+          appearance="secondary" 
+          size="s" 
+          icon="tuiIconEye" 
+          type="button"
+          (click)="openPreview()">
+  </button>
 
-    <!-- Кнопка Копировать -->
-    <button class="action-btn"
-            [cdkCopyToClipboard]="formattedCode" 
-            appearance="secondary" 
-            tuiIconButton 
-            icon="tuiIconCopyLarge" 
-            type="button">
-    </button>
-  </div>
+  <!-- Копирование -->
+  <button class="action-btn"
+          [cdkCopyToClipboard]="formattedCode" 
+          appearance="secondary" 
+          tuiIconButton 
+          size="s"
+          icon="tuiIconCopyLarge" 
+          type="button">
+  </button>
+</div>
 
   <div class="code-scroll-area">
     <pre><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
