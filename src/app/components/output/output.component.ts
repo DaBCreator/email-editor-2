@@ -247,7 +247,7 @@ export class OutputComponent {
         style="border-collapse:collapse;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;-moz-text-size-adjust:none;word-wrap:normal;word-break:normal;hyphens:none;">
         <tr>
             <td align="center" style="padding-bottom:48px;">
-            
+               
                 <!--[if gte mso 9]>
                 <table border="0" cellpadding="0" cellspacing="0" width="600">
                     <tr>
@@ -272,9 +272,11 @@ export class OutputComponent {
   `
 
   suffix = `
-  </table>
+                                        </table>
                                     </td>
                                 </tr>
+                                <!-- end: footer variables -->
+	
                             </table>
                             <!--[if gte mso 9]>
                                     </td>
@@ -295,5 +297,3 @@ export class OutputComponent {
 </body>
 
 </html>
-`
-}
