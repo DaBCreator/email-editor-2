@@ -4,3 +4,39 @@ pre {
   white-space: pre-wrap;
   word-break: break-all;
 }
+
+/* Новые стили для CodeMirror и раскладки */
+.output-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+}
+
+.toolbar {
+  flex-shrink: 0;
+}
+
+.preview-mode {
+  flex: 1;
+  overflow: auto;
+}
+
+.editor-mode {
+  flex: 1;
+  overflow: hidden;
+}
+
+#cm-editor-container {
+  height: 100%;
+}
+
+.cm-editor {
+  height: 100%;
+  font-size: 14px;
+}
+
+/* Настройка прокрутки в CodeMirror */
+.cm-scroller {
+  overflow: auto;
+}
