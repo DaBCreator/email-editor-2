@@ -58,7 +58,7 @@ export class InputComponent {
 
    componentGroups = [
     {
-      name: 'Часто используемые',
+      name: 'Основа',
       isOpen: true,
       items: [
         { component: PreheaderComponent, name: 'Preheader', height: 1 },
@@ -72,6 +72,7 @@ export class InputComponent {
         { component: DynamicListComponent, name: 'Список', height: 3 },
         { component: AccentTextWithBackgroundComponent, name: 'Accent text with background', height: 1 },
         { component: ButtonWithBackgroundComponent, name: 'Кнопка', height: 2 },
+        { component: ButtonWithGifComponent, name: 'Кнопка с гиф', height: 2 },
         { component: FooterOneComponent, name: 'Футер 1. Т-Банк + лого', height: 1 },
         { component: FooterTwoComponent, name: 'Футер 2. Т-Банк + Отписаться + Условия', height: 1 },
         { component: FooterThreeComponent, name: 'Футер 3. Т-Банк + Отписаться', height: 1 },
@@ -83,7 +84,6 @@ export class InputComponent {
       name: 'Дополнительные',
       isOpen: false,
       items: [
-        { component: ButtonWithGifComponent, name: 'Кнопка с гиф', height: 2 },
         { component: AccentTextWithBorderComponent, name: 'AccentTextWithBorder', height: 1 },
         { component: TextLineComponent, name: 'Text line', height: 1 },
         { component: AlarmBlockComponent, name: 'AlarmBlock', height: 2 },
