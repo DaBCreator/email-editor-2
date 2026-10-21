@@ -15,20 +15,6 @@
 
   <!-- РЕЖИМ РЕДАКТИРОВАНИЯ -->
   <div *ngIf="isEditMode" class="editor-mode">
-    <div class="fake-editor-wrapper">
-      <!-- Слой с цветным текстом -->
-      <pre class="fake-editor-highlight" #codePre aria-hidden="true"><code class="hljs" [innerHTML]="highlightedCode"></code></pre>
-      
-      <!-- Прозрачный слой, куда мы печатаем -->
-      <textarea 
-        #codeTextarea
-        class="fake-editor-input" 
-        [value]="formattedCode" 
-        (input)="onInput($event)"
-        (scroll)="syncScroll()"
-        spellcheck="false"
-        wrap="off">
-      </textarea>
-    </div>
+    <div id="cm-editor-container"></div>
   </div>
 </div>
