@@ -1,4 +1,3 @@
-@import 'highlight.js/styles/base16/one-light.css';
 @import 'reset';
 @import 'layout';
 @import "tailwindcss/base";
@@ -118,4 +117,18 @@ body.dark-theme .preview-mode code {
    ========================================= */
 body.dark-theme .editor-mode {
   background-color: #0d1117 !important;
+}
+
+/* =========================================
+   ЦВЕТА КОДА ДЛЯ СВЕТЛОЙ И ТЁМНОЙ ТЕМ
+   ========================================= */
+
+/* По умолчанию (светлая тема) */
+.preview-mode {
+  @import 'highlight.js/styles/base16/one-light.css';
+}
+
+/* Когда включена тёмная тема */
+body.dark-theme .preview-mode {
+  @import 'highlight.js/styles/base16/classic-dark.css';
 }
