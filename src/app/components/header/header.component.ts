@@ -9,6 +9,13 @@ import { TuiButtonModule } from '@taiga-ui/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  isDarkMode = false;
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-theme', this.isDarkMode);
+  }
+  
   scrollToEditor() {
     const el = document.getElementById('output-container');
     if (el) {
