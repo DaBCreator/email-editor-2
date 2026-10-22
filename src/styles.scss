@@ -14,11 +14,12 @@ body.dark-theme {
   color: #e6edf3 !important;
   
   /* Переменные Taiga UI для кнопок */
-  --tui-secondary: #2d333b !important;
-  --tui-secondary-hover: #3d444d !important;
-  --tui-secondary-active: #1c2128 !important;
-  --tui-primary: #2d333b !important;
-  --tui-primary-hover: #3d444d !important;
+  --tui-secondary: #3d444d !important;
+  --tui-secondary-hover: #4a545e !important;
+  --tui-secondary-active: #2d333b !important;
+  --tui-primary: #3d444d !important;
+  --tui-primary-hover: #4a545e !important;
+  --tui-primary-active: #2d333b !important;
 }
 
 /* Контейнеры приложения */
@@ -46,7 +47,7 @@ body.dark-theme .content {
 
 /* Кнопки в палитре (Основа, Футеры) */
 body.dark-theme .group-header-btn {
-  background-color: #656A72 !important;
+  background-color: #3d444d !important;
   color: #c9d1d9 !important;
   border-color: #444c56 !important;
 }
