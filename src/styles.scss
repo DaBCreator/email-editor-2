@@ -5,12 +5,23 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* =========================================
+   ТЁМНАЯ ТЕМА (ГЛОБАЛЬНАЯ)
+   ========================================= */
+
 body.dark-theme {
   background-color: #0f1115 !important;
   color: #e6edf3 !important;
+  
+  /* Переменные Taiga UI для кнопок */
+  --tui-secondary: #2d333b !important;
+  --tui-secondary-hover: #3d444d !important;
+  --tui-secondary-active: #1c2128 !important;
+  --tui-primary: #2d333b !important;
+  --tui-primary-hover: #3d444d !important;
 }
 
-/* Меняем фон у основного контейнера приложения */
+/* Контейнеры приложения */
 body.dark-theme .tui-root,
 body.dark-theme app-root {
   background-color: #0f1115 !important;
@@ -33,22 +44,46 @@ body.dark-theme .content {
   color: #e6edf3 !important;
 }
 
-/* Кнопки в палитре (Основа, Футеры и т.д.) */
-body.dark-theme .group-header-btn,
-body.dark-theme .block-btn {
-  background-color: #21262d !important;
-  color: #e6edf3 !important;
-  border-color: #30363d !important;
+/* Кнопки в палитре (Основа, Футеры) */
+body.dark-theme .group-header-btn {
+  background-color: #2d333b !important;
+  color: #c9d1d9 !important;
+  border-color: #444c56 !important;
 }
 
 body.dark-theme .group-header-btn:hover {
-  background-color: #30363d !important;
+  background-color: #3d444d !important;
 }
 
-/* Кнопка "Редактировать" */
-body.dark-theme .toolbar button {
-  background-color: #21262d !important;
-  color: #e6edf3 !important;
+/* Кнопки самих блоков (Preheader, Image) */
+body.dark-theme .block-btn {
+  background-color: #2d333b !important;
+  color: #c9d1d9 !important;
+  border: 1px solid #444c56 !important;
+}
+
+body.dark-theme .block-btn:hover {
+  background-color: #3d444d !important;
+  color: #ffffff !important;
+}
+
+/* Все кнопки Taiga UI (Редактировать, К коду, глазик, копирование) */
+body.dark-theme button[tuiButton],
+body.dark-theme button[tuiIconButton] {
+  background-color: #2d333b !important;
+  color: #c9d1d9 !important;
+  border-color: #444c56 !important;
+}
+
+body.dark-theme button[tuiButton]:hover,
+body.dark-theme button[tuiIconButton]:hover {
+  background-color: #3d444d !important;
+  color: #ffffff !important;
+}
+
+/* Иконки внутри кнопок */
+body.dark-theme button[tuiIconButton] svg {
+  color: #c9d1d9 !important;
 }
 
 /* Поля ввода */
@@ -59,20 +94,28 @@ body.dark-theme textarea {
   border-color: #30363d !important;
 }
 
-/* ⚠️ ЗАЩИТА КОДА */
+/* =========================================
+   БЛОК С КОДОМ (ПРОСМОТР)
+   ========================================= */
+
 body.dark-theme .code-container,
 body.dark-theme .code-scroll-area {
   background-color: #1c2128 !important;
   border-color: #30363d !important;
 }
 
-/* Обертка предпросмотра */
 body.dark-theme .preview-mode {
   background-color: transparent !important;
 }
 
-/* Сам блок <pre> с кодом — прозрачный, чтобы фон просвечивал */
 body.dark-theme .preview-mode pre,
 body.dark-theme .preview-mode code {
   background-color: transparent !important;
+}
+
+/* =========================================
+   CODEMIRROR (РЕДАКТОР)
+   ========================================= */
+body.dark-theme .editor-mode {
+  background-color: #0d1117 !important;
 }
