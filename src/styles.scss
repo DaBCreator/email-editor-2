@@ -1,3 +1,4 @@
+@import 'highlight.js/styles/base16/one-light.css';
 @import 'reset';
 @import 'layout';
 @import "tailwindcss/base";
@@ -74,6 +75,12 @@ body.dark-theme button[tuiIconButton] {
   border-color: #444c56 !important;
 }
 
+body.dark-theme button[tuiButton] .t-content,
+body.dark-theme button[tuiButton] span,
+body.dark-theme button[tuiIconButton] .t-content {
+  color: #ffffff !important;
+}
+
 body.dark-theme button[tuiButton]:hover,
 body.dark-theme button[tuiIconButton]:hover {
   background-color: #3d444d !important;
@@ -94,7 +101,7 @@ body.dark-theme textarea {
 }
 
 /* =========================================
-   БЛОК С КОДОМ (ПРОСМОТР)
+   БЛОК С КОДОМ (ПРОСМОТР) В ТЁМНОЙ ТЕМЕ
    ========================================= */
 
 body.dark-theme .code-container,
@@ -120,15 +127,42 @@ body.dark-theme .editor-mode {
 }
 
 /* =========================================
-   ЦВЕТА КОДА ДЛЯ СВЕТЛОЙ И ТЁМНОЙ ТЕМ
+   ЦВЕТА КОДА ДЛЯ ТЁМНОЙ ТЕМЫ (base16-classic-dark)
    ========================================= */
 
-/* По умолчанию (светлая тема) */
-.preview-mode {
-  @import 'highlight.js/styles/base16/one-light.css';
+body.dark-theme .preview-mode .hljs {
+  color: #d0d0d0 !important;
+  background: transparent !important; /* Фон уже тёмный у контейнера */
 }
 
-/* Когда включена тёмная тема */
-body.dark-theme .preview-mode {
-  @import 'highlight.js/styles/base16/classic-dark.css';
+body.dark-theme .preview-mode .hljs-tag,
+body.dark-theme .preview-mode .hljs-name,
+body.dark-theme .preview-mode .hljs-selector-tag {
+  color: #d75f5f !important; /* Красноватые теги */
+}
+
+body.dark-theme .preview-mode .hljs-attr,
+body.dark-theme .preview-mode .hljs-attribute {
+  color: #ffb454 !important; /* Оранжевые атрибуты */
+}
+
+body.dark-theme .preview-mode .hljs-string,
+body.dark-theme .preview-mode .hljs-title,
+body.dark-theme .preview-mode .hljs-type,
+body.dark-theme .preview-mode .hljs-variable {
+  color: #91b859 !important; /* Зелёные строки */
+}
+
+body.dark-theme .preview-mode .hljs-comment,
+body.dark-theme .preview-mode .hljs-quote {
+  color: #5c5c5c !important; /* Серые комментарии */
+}
+
+body.dark-theme .preview-mode .hljs-number,
+body.dark-theme .preview-mode .hljs-literal {
+  color: #ffb454 !important;
+}
+
+body.dark-theme .preview-mode .hljs-meta {
+  color: #d75f5f !important;
 }
