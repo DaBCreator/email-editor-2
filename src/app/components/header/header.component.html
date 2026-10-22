@@ -12,3 +12,14 @@
   (click)="scrollToEditor()">
   К коду
 </button>
+
+<button 
+  class="theme-switch" 
+  [class.dark]="isDarkMode"
+  (click)="toggleTheme()"
+  aria-label="Переключить тему">
+  
+  <div class="switch-track">
+    <div class="switch-thumb"></div>
+  </div>
+</button>
