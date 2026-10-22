@@ -60,12 +60,19 @@ body.dark-theme textarea {
 }
 
 /* ⚠️ ЗАЩИТА КОДА */
-body.dark-theme .preview-mode pre,
-body.dark-theme .preview-mode code {
+body.dark-theme .code-container,
+body.dark-theme .code-scroll-area {
+  background-color: #1c2128 !important;
+  border-color: #30363d !important;
+}
+
+/* Обертка предпросмотра */
+body.dark-theme .preview-mode {
   background-color: transparent !important;
 }
 
-/* CodeMirror остается темным */
-body.dark-theme .editor-mode {
-  background-color: #0d1117 !important; 
+/* Сам блок <pre> с кодом — прозрачный, чтобы фон просвечивал */
+body.dark-theme .preview-mode pre,
+body.dark-theme .preview-mode code {
+  background-color: transparent !important;
 }
